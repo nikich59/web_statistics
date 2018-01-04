@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.StackPane?>
+<fx:root type="javafx.scene.layout.StackPane"
+		 xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+	<StackPane
+			fx:id="chartStackPane"
+			style="-fx-border-insets: 16px;
+			-fx-border-color: black;
+			-fx-border-radius: 4px;
+			-fx-padding: 16px;">
+
+	</StackPane>
+</fx:root>

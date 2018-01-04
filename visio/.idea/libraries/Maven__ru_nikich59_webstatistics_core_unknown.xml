@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: ru.nikich59.webstatistics:core:unknown">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/ru/nikich59/webstatistics/core/unknown/core-unknown.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/ru/nikich59/webstatistics/core/unknown/core-unknown-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/ru/nikich59/webstatistics/core/unknown/core-unknown-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

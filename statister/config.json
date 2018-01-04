@@ -1,0 +1,6 @@
+{
+  "statisters_dir":"stats2\\statisters\\",
+  "sleuths_dir":"stats2\\sleuths",
+  "finished_statistics_directory_path":"stats2\\finished_stats\\",
+  "report_period_in_millis":60000
+}

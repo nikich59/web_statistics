@@ -1,0 +1,47 @@
+
+{
+  "description":
+  {
+	"url":"https://vk.com/mudakoff",
+	"target_url_prefix":"https://vk.com",
+	"target_url_postfix":"",
+	"new_id_query":"#page_wall_posts a.post_link $attr$href",
+	"data_type":"xml"
+  },
+  "period_in_millis":2000,
+  "title_description":
+  {
+	"source":"statister",
+	"parts":
+	[
+	  {
+		"query":"",
+		"postfix":"MDK: "
+	  },
+	  {
+		"query":".post_video_title",
+		"postfix":""
+	  },
+	  {
+		"query":".wall_post_text",
+		"postfix":""
+	  }
+	]
+  },
+  "target_description":
+  {
+	"data_type":"xml",
+	"data_processing_method":"int",
+	"period":10000,
+	"target_value_sum":20000,
+	"target_value_period_in_minutes":1440,
+	"expiration_period_in_minutes":10080,
+	"value_description":
+	[
+	  {
+		"name":"likes",
+		"query":".post_like_count"
+	  }
+	]
+  }
+}

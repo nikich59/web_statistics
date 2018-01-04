@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root type="javafx.scene.layout.StackPane"
+		 xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+	<HBox spacing="8" alignment="CENTER">
+		<Label
+				fx:id="titleLabel">
+		</Label>
+		<Button
+				fx:id="editButton"
+				text="Edit">
+		</Button>
+		<CheckBox
+				fx:id="enableCheckBox"
+				text="enabled"
+				onAction="#onEnabledCheckboxAction">
+		</CheckBox>
+	</HBox>
+</fx:root>
