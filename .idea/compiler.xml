@@ -7,13 +7,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="core" />
+        <module name="desktopapp" />
         <module name="statistics" />
-        <module name="visio" />
         <module name="webapp" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="core" target="1.8" />
+      <module name="desktopapp" target="1.8" />
       <module name="statistics" target="1.8" />
       <module name="visio" target="1.8" />
       <module name="webapp" target="1.5" />
