@@ -1,66 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2ca49b17-7e15-46e1-a4b1-4c2514a4cc14" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/VisioApplication.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/controller/SeriesListController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/controller/VisioChartController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/controller/VisioController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/gui/AddSeriesDialog.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/gui/editview/DiffSeriesEditVeiw.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/gui/editview/MultiplySeriesEditView.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/gui/editview/RateSeriesEditView.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/gui/editview/SeriesEditView.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/model/VisioModel$StatisticsSeries.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/model/VisioModel.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/model/bridge/ModelToAppBridge.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/model/bridge/ModelToDesktopAppBridge.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/model/series/DifferentialSeries.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/model/series/MultipliedSeries.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/model/series/PlainSeries.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/model/series/RateSeries.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/model/series/Series.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/model/series/selector/EachNthSeriesSelector$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/model/series/selector/EachNthSeriesSelector$SelectMode.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/model/series/selector/EachNthSeriesSelector.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/model/series/selector/EmptySelector.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/model/series/selector/PlainSeriesSelector.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/model/series/selector/SeriesSelector.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/view/SeriesListItem.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/view/SeriesView.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/view/VisioChartView$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/view/VisioChartView$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/view/VisioChartView$ChartingMode.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/view/VisioChartView.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/visio/desktopapp/target/classes/ru/nikich59/webstatistics/visio/desktopapp/view/VisioView.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/model/VisioModel.java" afterPath="$PROJECT_DIR$/visio/src/main/java/ru/nikich59/webstatistics/visio/model/VisioModel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/model/bridge/ModelToAppBridge.java" afterPath="$PROJECT_DIR$/visio/src/main/java/ru/nikich59/webstatistics/visio/model/bridge/ModelToAppBridge.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/model/series/DifferentialSeries.java" afterPath="$PROJECT_DIR$/visio/src/main/java/ru/nikich59/webstatistics/visio/model/series/DifferentialSeries.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/model/series/MultipliedSeries.java" afterPath="$PROJECT_DIR$/visio/src/main/java/ru/nikich59/webstatistics/visio/model/series/MultipliedSeries.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/model/series/PlainSeries.java" afterPath="$PROJECT_DIR$/visio/src/main/java/ru/nikich59/webstatistics/visio/model/series/PlainSeries.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/model/series/RateSeries.java" afterPath="$PROJECT_DIR$/visio/src/main/java/ru/nikich59/webstatistics/visio/model/series/RateSeries.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/model/series/Series.java" afterPath="$PROJECT_DIR$/visio/src/main/java/ru/nikich59/webstatistics/visio/model/series/Series.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/model/series/selector/EachNthSeriesSelector.java" afterPath="$PROJECT_DIR$/visio/src/main/java/ru/nikich59/webstatistics/visio/model/series/selector/EachNthSeriesSelector.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/model/series/selector/EmptySelector.java" afterPath="$PROJECT_DIR$/visio/src/main/java/ru/nikich59/webstatistics/visio/model/series/selector/EmptySelector.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/model/series/selector/PlainSeriesSelector.java" afterPath="$PROJECT_DIR$/visio/src/main/java/ru/nikich59/webstatistics/visio/model/series/selector/PlainSeriesSelector.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/model/series/selector/SeriesSelector.java" afterPath="$PROJECT_DIR$/visio/src/main/java/ru/nikich59/webstatistics/visio/model/series/selector/SeriesSelector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/statister/statistics.iml" afterPath="$PROJECT_DIR$/statister/statistics.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/visio/desktopapp/desktopapp.iml" afterPath="$PROJECT_DIR$/visio/desktopapp/desktopapp.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/visio/desktopapp/pom.xml" afterPath="$PROJECT_DIR$/visio/desktopapp/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/VisioApplication.java" afterPath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/VisioApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/controller/SeriesListController.java" afterPath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/controller/SeriesListController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/controller/VisioController.java" afterPath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/controller/VisioController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/gui/AddSeriesDialog.java" afterPath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/gui/AddSeriesDialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/gui/editview/DiffSeriesEditVeiw.java" afterPath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/gui/editview/DiffSeriesEditVeiw.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/gui/editview/MultiplySeriesEditView.java" afterPath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/gui/editview/MultiplySeriesEditView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/gui/editview/RateSeriesEditView.java" afterPath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/gui/editview/RateSeriesEditView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/gui/editview/SeriesEditView.java" afterPath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/gui/editview/SeriesEditView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/model/bridge/ModelToDesktopAppBridge.java" afterPath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/model/bridge/ModelToDesktopAppBridge.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/view/SeriesListItem.java" afterPath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/view/SeriesListItem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/view/SeriesView.java" afterPath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/view/SeriesView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/view/VisioView.java" afterPath="$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/view/VisioView.java" />
-    </list>
+    <list default="true" id="2ca49b17-7e15-46e1-a4b1-4c2514a4cc14" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/statister/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -82,6 +23,16 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/visio/desktopapp/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-36">
+              <caret line="25" column="30" lean-forward="true" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ModelToAppBridge.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/visio/src/main/java/ru/nikich59/webstatistics/visio/model/bridge/ModelToAppBridge.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -95,7 +46,7 @@
       <file leaf-file-name="SeriesView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/view/SeriesView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
+            <state relative-caret-position="1675">
               <caret line="70" column="53" lean-forward="false" selection-start-line="70" selection-start-column="53" selection-end-line="70" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -129,7 +80,7 @@
         <entry file="file://$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/controller/SeriesListController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="175">
-              <caret line="7" column="33" lean-forward="true" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+              <caret line="7" column="33" lean-forward="false" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
               <folding>
                 <element signature="e#550#551#0" expanded="true" />
                 <element signature="e#592#593#0" expanded="true" />
@@ -152,18 +103,17 @@
         <entry file="file://$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/gui/editview/MultiplySeriesEditView.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
-              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DiffSeriesEditVeiw.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DiffSeriesEditVeiw.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/gui/editview/DiffSeriesEditVeiw.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="6" column="39" lean-forward="false" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
-              <caret line="7" column="39" lean-forward="false" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
+            <state relative-caret-position="-936">
+              <caret line="9" column="27" lean-forward="false" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -172,19 +122,8 @@
       <file leaf-file-name="SeriesListItem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/view/SeriesListItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
+            <state relative-caret-position="575">
               <caret line="32" column="31" lean-forward="false" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VisioModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/visio/src/main/java/ru/nikich59/webstatistics/visio/model/VisioModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="2" column="38" lean-forward="false" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
-              <caret line="3" column="38" lean-forward="false" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -346,6 +285,8 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -692,8 +633,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1442,11 +1381,13 @@
       <workItem from="1515087175963" duration="799000" />
       <workItem from="1515087992801" duration="1250000" />
       <workItem from="1515089262009" duration="807000" />
+      <workItem from="1515090190800" duration="2000" />
+      <workItem from="1515090517174" duration="4000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118476000" />
+    <option name="totallyTimeSpent" value="118482000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1459,38 +1400,39 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.4582882" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="1920" y="23" width="1920" height="1017" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26545843" sideWeight="0.5" order="12" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4767064" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.4582882" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="1920" y="23" width="1920" height="1017" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26012793" sideWeight="0.5" order="12" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4767064" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1514,9 +1456,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="19" column="11" lean-forward="false" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1527,13 +1466,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/model/series/Series.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/model/series/Series.java" />
     <entry file="file://$PROJECT_DIR$/visio/desktopapp/src/main/resources/ru/nikich59/webstatistics/visio/desktopapp/view/visio_chart_view.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1556,7 +1489,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder">
@@ -1567,7 +1499,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder">
@@ -1588,7 +1519,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder">
@@ -1599,7 +1529,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
           <caret line="5" column="58" lean-forward="false" selection-start-line="5" selection-start-column="58" selection-end-line="5" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder">
@@ -1645,7 +1574,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
           <caret line="43" column="34" lean-forward="false" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1653,7 +1581,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="13" column="3" lean-forward="false" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1661,18 +1588,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/model/VisioModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="29" lean-forward="false" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/model/VisioModel.java" />
     <entry file="file://$PROJECT_DIR$/visio/desktopapp/desktopapp.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -1692,7 +1611,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
           <caret line="2" column="30" lean-forward="false" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1707,7 +1625,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1715,15 +1632,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="6" column="51" lean-forward="false" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/visio/desktopapp/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="22" column="34" lean-forward="true" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1731,7 +1639,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1739,7 +1646,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1747,7 +1653,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1755,7 +1660,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1763,7 +1667,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1771,7 +1674,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1779,7 +1681,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
           <caret line="2" column="34" lean-forward="false" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1800,14 +1701,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/visio/src/main/java/ru/nikich59/webstatistics/visio/model/bridge/ModelToDesktopAppBridge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="56" lean-forward="false" selection-start-line="3" selection-start-column="56" selection-end-line="3" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/visio/src/main/java/ru/nikich59/webstatistics/visio/model/bridge/ModelToDesktopAppBridge.java" />
     <entry file="file://$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/VisioApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
@@ -1820,9 +1714,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="55" column="55" lean-forward="false" selection-start-line="55" selection-start-column="55" selection-end-line="55" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1830,7 +1721,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1175">
           <caret line="66" column="38" lean-forward="false" selection-start-line="66" selection-start-column="38" selection-end-line="66" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1863,7 +1753,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/view/SeriesListItem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
+        <state relative-caret-position="575">
           <caret line="32" column="31" lean-forward="false" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
           <folding />
         </state>
@@ -1871,7 +1761,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/view/SeriesView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
+        <state relative-caret-position="1675">
           <caret line="70" column="53" lean-forward="false" selection-start-line="70" selection-start-column="53" selection-end-line="70" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1899,7 +1789,7 @@
     <entry file="file://$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/controller/SeriesListController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
-          <caret line="7" column="33" lean-forward="true" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+          <caret line="7" column="33" lean-forward="false" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
           <folding>
             <element signature="e#550#551#0" expanded="true" />
             <element signature="e#592#593#0" expanded="true" />
@@ -1918,16 +1808,23 @@
     <entry file="file://$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/gui/editview/MultiplySeriesEditView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/visio/desktopapp/src/main/java/ru/nikich59/webstatistics/visio/desktopapp/gui/editview/DiffSeriesEditVeiw.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="6" column="39" lean-forward="false" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
-          <caret line="7" column="39" lean-forward="false" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
+        <state relative-caret-position="-936">
+          <caret line="9" column="27" lean-forward="false" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visio/desktopapp/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-36">
+          <caret line="25" column="30" lean-forward="true" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
           <folding />
         </state>
       </provider>
