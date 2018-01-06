@@ -20,12 +20,14 @@ import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.List;
 
+import static ru.nikich59.webstatistics.visio.desktopapp.FXMLLoader.loadFxmlInto;
+
 /**
  * Created by Nikita on 30.12.2017.
  */
 
 
-public class VisioChartView extends StackPane
+public class VisioChartView extends BasicVisioView
 {
 	public void setController( VisioChartController controller )
 	{
@@ -81,26 +83,14 @@ public class VisioChartView extends StackPane
 	private XYChart < Number, Number > chart;
 	private VisioChartController controller;
 
-	private ViewPort viewPort = new ViewPort( );
-
 	private boolean doAllowXAxisZoom = true;
 	private boolean doAllowYAxisZoom = false;
 
 
 	public VisioChartView( )
+			throws IOException
 	{
-		FXMLLoader fxmlLoader = new FXMLLoader( getClass( ).getResource( "visio_chart_view.fxml" ) );
-		fxmlLoader.setRoot( this );
-		fxmlLoader.setController( this );
-
-		try
-		{
-			fxmlLoader.load( );
-		}
-		catch ( IOException exception )
-		{
-			throw new RuntimeException( exception );
-		}
+		loadFxmlInto( getClass( ).getResource( "visio_chart_view.fxml" ), this );
 
 		initializeUI( );
 	}
@@ -173,6 +163,9 @@ public class VisioChartView extends StackPane
 			oldYAxis = ( NumberAxis ) chart.getYAxis( );
 		}
 
+		oldXAxis.setForceZeroInRange( false );
+		oldYAxis.setForceZeroInRange( false );
+
 		oldXAxis.setTickLabelFormatter(
 				new StringConverter < Number >( )
 				{
@@ -206,7 +199,8 @@ public class VisioChartView extends StackPane
 
 				break;
 			default:
-				throw new UnsupportedOperationException( "Charting mode: \'" + chartingMode.toString( ) + "\' is not supported" );
+				handleException( new UnsupportedOperationException( "Charting mode: \'" +
+						chartingMode.toString( ) + "\' is not supported" ) );
 		}
 
 		chart.setData( oldData );

@@ -1,23 +1,25 @@
 package ru.nikich59.webstatistics.visio.desktopapp.view;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import ru.nikich59.webstatistics.visio.desktopapp.controller.SeriesListController;
+import ru.nikich59.webstatistics.visio.desktopapp.errohandler.ErrorHandler;
+import ru.nikich59.webstatistics.visio.desktopapp.view.dialog.AddSeriesDialog;
 import ru.nikich59.webstatistics.visio.model.VisioModel;
 import ru.nikich59.webstatistics.visio.model.series.Series;
-import ru.nikich59.webstatistics.visio.desktopapp.gui.AddSeriesDialog;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static ru.nikich59.webstatistics.visio.desktopapp.FXMLLoader.loadFxmlInto;
+
 /**
  * Created by Nikita on 29.12.2017.
  */
-public class SeriesView extends StackPane
+public class SeriesView extends BasicVisioView
 {
 	@FXML
 	private VBox seriesViewBox;
@@ -27,19 +29,9 @@ public class SeriesView extends StackPane
 	private List < VisioModel.StatisticsSeries > statisticsSeries;
 
 	public SeriesView( )
+			throws IOException
 	{
-		FXMLLoader fxmlLoader = new FXMLLoader( getClass( ).getResource( "series_view.fxml" ) );
-		fxmlLoader.setRoot( this );
-		fxmlLoader.setController( this );
-
-		try
-		{
-			fxmlLoader.load( );
-		}
-		catch ( IOException exception )
-		{
-			throw new RuntimeException( exception );
-		}
+		loadFxmlInto( getClass( ).getResource( "series_view.fxml" ), this );
 	}
 
 	public void update( List < VisioModel.StatisticsSeries > statisticsSeries )
@@ -49,7 +41,14 @@ public class SeriesView extends StackPane
 		seriesViewBox.getChildren( ).clear( );
 		for ( VisioModel.StatisticsSeries series : statisticsSeries )
 		{
-			seriesViewBox.getChildren( ).add( new SeriesListItem( series, controller ) );
+			try
+			{
+				seriesViewBox.getChildren( ).add( new SeriesListItem( series, controller ) );
+			}
+			catch ( Exception e )
+			{
+				handleException( e );
+			}
 		}
 	}
 

@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * Created by Nikita on 30.12.2017.
  */
-public class SeriesListItem extends StackPane
+public class SeriesListItem extends BasicVisioView
 {
 	@FXML
 	private Label titleLabel;
@@ -31,23 +31,13 @@ public class SeriesListItem extends StackPane
 
 
 	public SeriesListItem( VisioModel.StatisticsSeries series, SeriesListController controller )
+			throws IOException
 	{
 		this.series = series;
 		this.controller = controller;
 
-
-		FXMLLoader fxmlLoader = new FXMLLoader( getClass( ).getResource( "series_list_item.fxml" ) );
-		fxmlLoader.setRoot( this );
-		fxmlLoader.setController( this );
-
-		try
-		{
-			fxmlLoader.load( );
-		}
-		catch ( IOException exception )
-		{
-			throw new RuntimeException( exception );
-		}
+		ru.nikich59.webstatistics.visio.desktopapp.FXMLLoader.loadFxmlInto(
+				getClass( ).getResource( "series_list_item.fxml" ), this );
 
 		initializeUI( );
 	}

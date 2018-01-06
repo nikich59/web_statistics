@@ -1,16 +1,15 @@
 package ru.nikich59.webstatistics.visio.desktopapp.view;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import ru.nikich59.webstatistics.visio.desktopapp.controller.SeriesListController;
 import ru.nikich59.webstatistics.visio.desktopapp.controller.VisioChartController;
 import ru.nikich59.webstatistics.visio.desktopapp.controller.VisioController;
+import ru.nikich59.webstatistics.visio.desktopapp.view.dialog.AddStatisticsDialog;
 import ru.nikich59.webstatistics.visio.model.VisioModel;
 import stats.controller.StatsController;
 import stats.controller.StatsFileController;
@@ -21,11 +20,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static ru.nikich59.webstatistics.visio.desktopapp.FXMLLoader.loadFxmlInto;
+
 /**
  * Created by Nikita on 29.12.2017.
  */
 
-public class VisioView extends StackPane
+public class VisioView extends BasicVisioView
 {
 	@FXML
 	private TextField textField;
@@ -43,23 +44,12 @@ public class VisioView extends StackPane
 
 
 	public VisioView( VisioController controller )
+			throws IOException
 	{
-		System.out.println( getClass( ).getResource( "visio_view.fxml" ) );
+		loadFxmlInto( getClass( ).getResource( "visio_view.fxml" ), this );
 
-
-
-		FXMLLoader fxmlLoader = new FXMLLoader( getClass( ).getResource( "visio_view.fxml" ) );
-		fxmlLoader.setRoot( this );
-		fxmlLoader.setController( this );
-
-		try
-		{
-			fxmlLoader.load( );
-		}
-		catch ( IOException exception )
-		{
-			throw new RuntimeException( exception );
-		}
+		seriesView.setErrorHandler( getErrorHandler( ) );
+		visioChartView.setErrorHandler( getErrorHandler( ) );
 
 		setController( controller );
 	}
@@ -111,7 +101,8 @@ public class VisioView extends StackPane
 	@FXML
 	private void menuFileAddClicked( )
 	{
-		AddStatisticsDialog addStatisticsDialog = new AddStatisticsDialog( controller.getStatisticsDirectory( ) );
+		AddStatisticsDialog addStatisticsDialog = new AddStatisticsDialog(
+				controller.getStatisticsDirectory( ), getErrorHandler( ) );
 
 		Optional < StatsController > result = addStatisticsDialog.showAndWait( );
 
@@ -129,6 +120,11 @@ public class VisioView extends StackPane
 						"*" + StatsFileController.FILE_EXTENSION ) );
 
 		File file = fileChooser.showOpenDialog( null );
+
+		if ( file == null || ! file.exists( ) )
+		{
+			return;
+		}
 
 		StatsFileController statsFileController = new StatsFileController( );
 		statsFileController.setStatisticsDirectory( file.getAbsolutePath( ) );

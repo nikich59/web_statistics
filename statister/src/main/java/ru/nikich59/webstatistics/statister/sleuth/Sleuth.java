@@ -6,6 +6,10 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import ru.nikich59.webstatistics.statister.*;
+import ru.nikich59.webstatistics.statister.webdataacquirer.WebDataAcquirer;
+import ru.nikich59.webstatistics.statister.webdataacquirer.WebDataAcquirerFactory;
+import ru.nikich59.webstatistics.statister.webdataacquirer.WebDataAcquirerJSON;
+import ru.nikich59.webstatistics.statister.webdataacquirer.WebDataAcquirerXML;
 import stats.DataType;
 
 import java.io.FileReader;
