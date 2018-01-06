@@ -1,6 +1,7 @@
 package ru.nikich59.webstatistics.visio.desktopapp.controller;
 
-import com.sun.istack.internal.NotNull;
+//import com.sun.istack.internal.NotNull;
+//import com.sun.istack.internal.NotNull;
 import javafx.geometry.Point2D;
 import javafx.scene.input.ScrollEvent;
 import ru.nikich59.webstatistics.visio.model.VisioModel;
@@ -111,7 +112,7 @@ public class VisioController
 		modelToAppBridge.updateView( );
 	}
 
-	public void setOnChartScrollEventHandler( @NotNull Consumer < ScrollEvent > onChartScrollEventHandler )
+	public void setOnChartScrollEventHandler( Consumer < ScrollEvent > onChartScrollEventHandler )
 	{
 		this.onChartScrollEventHandler = onChartScrollEventHandler;
 	}
@@ -121,7 +122,7 @@ public class VisioController
 		onChartScrollEventHandler.accept( scrollEvent );
 	}
 
-	public void setOnChartMouseMoveEventHandler( @NotNull Consumer < Point2D > onMouseMoveEventHandler )
+	public void setOnChartMouseMoveEventHandler( Consumer < Point2D > onMouseMoveEventHandler )
 	{
 		this.onMouseMoveEventHandler = onMouseMoveEventHandler;
 	}

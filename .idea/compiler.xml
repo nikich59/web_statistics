@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="core" />
+        <module name="core (1) (ru.nikich59.webstatistics.visio)" />
         <module name="desktopapp" />
         <module name="statistics" />
         <module name="webapp" />
@@ -14,6 +15,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="core" target="1.8" />
+      <module name="core (1) (ru.nikich59.webstatistics.visio)" target="1.8" />
       <module name="desktopapp" target="1.8" />
       <module name="statistics" target="1.8" />
       <module name="visio" target="1.8" />

@@ -3,6 +3,8 @@ package ru.nikich59.webstatistics.statister;
 import com.sun.javafx.UnmodifiableArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import ru.nikich59.webstatistics.statister.webdataacquirer.WebDataAcquirer;
+import ru.nikich59.webstatistics.statister.webdataacquirer.WebDataAcquirerFactory;
 import stats.DataType;
 import stats.Statistics;
 import stats.controller.StatsController;

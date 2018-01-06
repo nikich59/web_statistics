@@ -11,13 +11,9 @@
 
 
 	<modules>
-		<module>visio</module>
-		<module>statister</module>
 		<module>core</module>
-		<!--
-		<module>visio/webapp</module>
-		<module>visio/desktopapp</module>
-		-->
+		<module>statister</module>
+		<module>visio</module>
 	</modules>
 
 </project>
