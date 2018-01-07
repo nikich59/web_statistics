@@ -12,6 +12,11 @@
 
 	<name>stats</name>
 
+
+	<properties>
+		<tomcat.version>8.0.36</tomcat.version>
+	</properties>
+
 	<build>
 		<finalName>stats</finalName>
 		<plugins>
@@ -40,6 +45,17 @@
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-dbcp</artifactId>
 			<version>8.0.36</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-servlet-api</artifactId>
+			<version>${tomcat.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-websocket</artifactId>
+			<version>${tomcat.version}</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>

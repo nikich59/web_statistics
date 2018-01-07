@@ -15,11 +15,25 @@
 	</properties>
 
 
+
 	<modules>
 		<module>desktopapp</module>
 		<module>webapp</module>
 		<module>visiocore</module>
 	</modules>
+
+	<build>
+		<!-- In the multi-module root pom, use the pluginManagement to define the version of the maven-plugin -->
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>2.2</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 
 
 	<dependencies>
