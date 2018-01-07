@@ -10,6 +10,7 @@ public class StatsFileLoadTest
 	public void testLoad( )
 			throws Exception
 	{
+		/*
 		StatsFileController statsFileController = new StatsFileController( );
 
 		statsFileController.setStatisticsDirectory(
@@ -22,7 +23,7 @@ public class StatsFileLoadTest
 		for ( String columnName : statsFileController.getStatistics( ).getColumnNames( ) )
 		{
 			System.out.println( columnName );
-		}
+		}*/
 
 //		assert false;
 
