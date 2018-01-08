@@ -2,6 +2,7 @@ stats\DataType$1.class
 stats\controller\StatsFileController.class
 stats\DataType.class
 stats\controller\StatsControllerFactory.class
+stats\Statistics$StatisticsHeader.class
 stats\Statistics.class
 stats\StatsFile.class
 stats\Statistics$DataPoint.class

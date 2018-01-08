@@ -41,7 +41,7 @@ public class Model
 			StatisticsSeries series = new StatisticsSeries( );
 			series.id = String.valueOf( statisticsSeries.size( ) );
 			series.isEnabled = false;
-			series.seriesBeginDateTime = statistics.getInitialDateTime( );
+			series.seriesBeginDateTime = statistics.getHeader( ).getInitialDateTime( );
 
 			List < Number > xAxis = new ArrayList <>( );
 			List < Number > yAxis = new ArrayList <>( );
@@ -60,7 +60,7 @@ public class Model
 			}
 
 			PlainSeries < Number, Number > plainSeries = new PlainSeries <>( );
-			plainSeries.setName( statistics.getColumnNames( ).get( columnIndex ) );
+			plainSeries.setName( statistics.getHeader( ).getColumnNames( ).get( columnIndex ) );
 			plainSeries.setxAxis( xAxis );
 			plainSeries.setyAxis( yAxis );
 

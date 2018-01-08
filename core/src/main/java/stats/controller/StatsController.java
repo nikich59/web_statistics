@@ -10,10 +10,8 @@ import java.util.List;
  */
 public abstract class StatsController
 {
-	public abstract void loadStatisticsCaption( )
+	public abstract Statistics.StatisticsHeader loadStatisticsCaption( )
 			throws IOException;
-
-	public abstract String getStatisticsId( );
 
 	public abstract void storeStatistics( Statistics statistics )
 			throws IOException;

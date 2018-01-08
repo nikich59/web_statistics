@@ -256,9 +256,9 @@ public class SiteStatisticsAcquirer implements Comparable < SiteStatisticsAcquir
 		statsController.loadStatisticsCaption( );
 		Statistics statistics = statsController.getStatistics( );
 
-		initialDateTime = statistics.getInitialDateTime( );
+		initialDateTime = statistics.getHeader( ).getInitialDateTime( );
 
-		UnmodifiableArrayList < String > columnQueries = statistics.getColumnQueries( );
+		UnmodifiableArrayList < String > columnQueries = statistics.getHeader( ).getColumnQueries( );
 		List < SiteDescriptor.ValueDescriptor > valueDescriptors = new ArrayList <>( );
 
 		for ( String columnQuery : columnQueries )
@@ -269,16 +269,16 @@ public class SiteStatisticsAcquirer implements Comparable < SiteStatisticsAcquir
 			valueDescriptors.add( valueDescriptor );
 		}
 
-		siteDescriptor = new SiteDescriptor( statistics.getLink( ) );
+		siteDescriptor = new SiteDescriptor( statistics.getHeader( ).getLink( ) );
 		siteDescriptor.setValueDescriptors( valueDescriptors );
-		siteDescriptor.setInitialAcquirePeriodInMillis( statistics.getPeriodInMillis( ) );
-		siteDescriptor.setDataType( statistics.getDataType( ) );
-		siteDescriptor.setDataProcessingMethod( statistics.getDataProcessingMethod( ) );
+		siteDescriptor.setInitialAcquirePeriodInMillis( statistics.getHeader( ).getPeriodInMillis( ) );
+		siteDescriptor.setDataType( statistics.getHeader( ).getDataType( ) );
+		siteDescriptor.setDataProcessingMethod( statistics.getHeader( ).getDataProcessingMethod( ) );
 
-		siteDescriptor.setTargetColumnSum( statistics.getTargetColumnSum( ) );
-		siteDescriptor.setTargetValuePeriodInMinutes( statistics.getTargetValuePeriodInMinutes( ) );
+		siteDescriptor.setTargetColumnSum( statistics.getHeader( ).getTargetColumnSum( ) );
+		siteDescriptor.setTargetValuePeriodInMinutes( statistics.getHeader( ).getTargetValuePeriodInMinutes( ) );
 
-		siteDescriptor.setExpirationPeriodInMinutes( statistics.getExpirationPeriodInMinutes( ) );
+		siteDescriptor.setExpirationPeriodInMinutes( statistics.getHeader( ).getExpirationPeriodInMinutes( ) );
 	}
 
 	public String getStatisticsId( )
@@ -311,9 +311,9 @@ public class SiteStatisticsAcquirer implements Comparable < SiteStatisticsAcquir
 //		StatsFile.DataPoint dataPoint = new StatsFile.DataPoint( );
 
 		Statistics statistics = new Statistics( );
-		statistics.setHeadline( siteDescriptor.getHeadline( ) );
-		statistics.setLink( siteDescriptor.getUrl( ) );
-		statistics.setInitialDateTime( ZonedDateTime.now( ) );
+		statistics.getHeader( ).setHeadline( siteDescriptor.getHeadline( ) );
+		statistics.getHeader( ).setLink( siteDescriptor.getUrl( ) );
+		statistics.getHeader( ).setInitialDateTime( ZonedDateTime.now( ) );
 
 		List < String > columnNames = new ArrayList <>( );
 		List < String > columnQueries = new ArrayList <>( );
@@ -324,15 +324,15 @@ public class SiteStatisticsAcquirer implements Comparable < SiteStatisticsAcquir
 			columnQueries.add( valueDescriptor.query );
 		}
 
-		statistics.setColumnNames( columnNames );
-		statistics.setColumnQueries( columnQueries );
-		statistics.setPeriodInMillis( siteDescriptor.initialAcquirePeriodInMillis );
-		statistics.setDataType( siteDescriptor.dataType );
-		statistics.setDataProcessingMethod( siteDescriptor.dataProcessingMethod );
+		statistics.getHeader( ).setColumnNames( columnNames );
+		statistics.getHeader( ).setColumnQueries( columnQueries );
+		statistics.getHeader( ).setPeriodInMillis( siteDescriptor.initialAcquirePeriodInMillis );
+		statistics.getHeader( ).setDataType( siteDescriptor.dataType );
+		statistics.getHeader( ).setDataProcessingMethod( siteDescriptor.dataProcessingMethod );
 
-		statistics.setTargetColumnSum( siteDescriptor.targetColumnSum );
-		statistics.setTargetValuePeriodInMinutes( siteDescriptor.targetValuePeriodInMinutes );
-		statistics.setExpirationPeriodInMinutes( siteDescriptor.expirationPeriodInMinutes );
+		statistics.getHeader( ).setTargetColumnSum( siteDescriptor.targetColumnSum );
+		statistics.getHeader( ).setTargetValuePeriodInMinutes( siteDescriptor.targetValuePeriodInMinutes );
+		statistics.getHeader( ).setExpirationPeriodInMinutes( siteDescriptor.expirationPeriodInMinutes );
 
 		statsController.initStatistics( statistics );
 

@@ -26,6 +26,6 @@ public class StatisticsInfoView extends StackPane
 
 		loadFxmlInto( getClass( ).getResource( "statistics_view.fxml" ), this );
 
-		titleLabel.setText( controller.getStatistics( ).getHeadline( ) );
+		titleLabel.setText( controller.getStatistics( ).getHeader( ).getHeadline( ) );
 	}
 }

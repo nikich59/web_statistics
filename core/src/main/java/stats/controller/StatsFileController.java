@@ -34,18 +34,14 @@ public class StatsFileController extends StatsController
 	}
 
 	@Override
-	public void loadStatisticsCaption( )
+	public Statistics.StatisticsHeader loadStatisticsCaption( )
 			throws IOException
 	{
 		StatsFile statsFile = StatsFile.loadCaptionFromFile( statisticsDirectory );
 
 		this.statistics = statsFile.getStatistics( );
-	}
 
-	@Override
-	public String getStatisticsId( )
-	{
-		return statisticsDirectory;
+		return statsFile.getStatistics( ).getHeader( );
 	}
 
 	@Override
@@ -55,14 +51,19 @@ public class StatsFileController extends StatsController
 		StatsFile statsFile = new StatsFile( );
 		statsFile.setStatistics( statistics );
 
-		String filePath = statisticsDirectory + statistics.getLink( ).
+		String filePath = getFilePath( statistics.getHeader( ) );
+
+		statsFile.writeToFile( filePath );
+	}
+
+	private static String getFilePath( Statistics.StatisticsHeader statisticsHeader )
+	{
+		String filePath = statisticsHeader.getLink( ).
 				replace( " ", "" ).replace( "?", "" ).
 				replace( ".", "" ).replace( "\\", "" ).
 				replace( "/", "" ).replace( ":", "" ) + "." + FILE_EXTENSION;
 
-		File file = new File( filePath );
-
-		statsFile.writeToFile( filePath );
+		return filePath;
 	}
 
 	@Override
@@ -72,7 +73,7 @@ public class StatsFileController extends StatsController
 		StatsFile statsFile = new StatsFile( );
 		statsFile.setStatistics( statistics );
 
-		String filePath = statisticsDirectory + statistics.getLink( ).
+		String filePath = statisticsDirectory + statistics.getHeader( ).getLink( ).
 				replace( " ", "" ).replace( "?", "" ).
 				replace( ".", "" ).replace( "\\", "" ).
 				replace( "/", "" ).replace( ":", "" ) + "." + FILE_EXTENSION;

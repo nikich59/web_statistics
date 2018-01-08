@@ -82,17 +82,17 @@ public class StatsFile
 			List < String > columnQueriesList = separateWrappedParts( columnQueries, COLUMN_QUERY_WRAP_SYMBOL );
 
 
-			statsFile.statistics.setInitialDateTime( ZonedDateTime.parse( initialTimeStamp ) );
-			statsFile.statistics.setLink( link );
-			statsFile.statistics.setHeadline( headline );
-			statsFile.statistics.setColumnNames( columnNamesArray );
-			statsFile.statistics.setColumnQueries( columnQueriesList );
-			statsFile.statistics.setPeriodInMillis( Integer.parseInt( periodInMillisString ) );
-			statsFile.statistics.setDataType( DataType.fromString( dataTypeString ) );
-			statsFile.statistics.setDataProcessingMethod( dataProcessingMethodString );
-			statsFile.statistics.setTargetColumnSum( Long.parseLong( targetColumnSumString ) );
-			statsFile.statistics.setTargetValuePeriodInMinutes( Long.parseLong( targetValuePeriodInMinutesString ) );
-			statsFile.statistics.setExpirationPeriodInMinutes( Long.parseLong( expirationPeriodInMinutesString ) );
+			statsFile.statistics.getHeader( ).setInitialDateTime( ZonedDateTime.parse( initialTimeStamp ) );
+			statsFile.statistics.getHeader( ).setLink( link );
+			statsFile.statistics.getHeader( ).setHeadline( headline );
+			statsFile.statistics.getHeader( ).setColumnNames( columnNamesArray );
+			statsFile.statistics.getHeader( ).setColumnQueries( columnQueriesList );
+			statsFile.statistics.getHeader( ).setPeriodInMillis( Integer.parseInt( periodInMillisString ) );
+			statsFile.statistics.getHeader( ).setDataType( DataType.fromString( dataTypeString ) );
+			statsFile.statistics.getHeader( ).setDataProcessingMethod( dataProcessingMethodString );
+			statsFile.statistics.getHeader( ).setTargetColumnSum( Long.parseLong( targetColumnSumString ) );
+			statsFile.statistics.getHeader( ).setTargetValuePeriodInMinutes( Long.parseLong( targetValuePeriodInMinutesString ) );
+			statsFile.statistics.getHeader( ).setExpirationPeriodInMinutes( Long.parseLong( expirationPeriodInMinutesString ) );
 		}
 		catch ( Exception e )
 		{
@@ -212,33 +212,38 @@ public class StatsFile
 		}
 
 		captionLines[ CAPTION_INDEX_INITIAL_DATETIME_LINE ] =
-				statistics.getInitialDateTime( ).toString( );
-		captionLines[ CAPTION_INDEX_LINK ] = statistics.getLink( );
-		captionLines[ CAPTION_INDEX_HEADLINE ] = statistics.getHeadline( );
+				statistics.getHeader( ).getInitialDateTime( ).toString( );
+		captionLines[ CAPTION_INDEX_LINK ] = statistics.getHeader( ).getLink( );
+		captionLines[ CAPTION_INDEX_HEADLINE ] = statistics.getHeader( ).getHeadline( );
 
 		captionLines[ CAPTION_INDEX_COLUMN_NAMES ] = TIMESTAMP_COLUMN_NAME;
-		for ( String columnName : statistics.getColumnNames( ) )
+		for ( String columnName : statistics.getHeader( ).getColumnNames( ) )
 		{
 			captionLines[ CAPTION_INDEX_COLUMN_NAMES ] += COLUMN_SEPARATOR + "\"" + columnName + "\"";
 		}
 
 		captionLines[ CAPTION_INDEX_COLUMN_QUERIES ] = TIMESTAMP_COLUMN_NAME;
-		for ( String columnQuery : statistics.getColumnQueries( ) )
+		for ( String columnQuery : statistics.getHeader( ).getColumnQueries( ) )
 		{
 			captionLines[ CAPTION_INDEX_COLUMN_QUERIES ] += COLUMN_SEPARATOR + "\"" + columnQuery + "\"";
 		}
 
-		captionLines[ CAPTION_INDEX_PERIOD_IN_MILLIS ] = String.valueOf( statistics.getPeriodInMillis( ) );
+		captionLines[ CAPTION_INDEX_PERIOD_IN_MILLIS ] =
+				String.valueOf( statistics.getHeader( ).getPeriodInMillis( ) );
 
-		captionLines[ CAPTION_INDEX_DATA_TYPE ] = statistics.getDataType( ).toString( );
+		captionLines[ CAPTION_INDEX_DATA_TYPE ] = statistics.getHeader( ).getDataType( ).toString( );
 
-		captionLines[ CAPTION_INDEX_DATA_PROCESSING_METHOD ] = statistics.getDataProcessingMethod( );
+		captionLines[ CAPTION_INDEX_DATA_PROCESSING_METHOD ] =
+				statistics.getHeader( ).getDataProcessingMethod( );
 
-		captionLines[ CAPTION_INDEX_TARGET_COLUMN_SUM ] = String.valueOf( statistics.getTargetColumnSum( ) );
+		captionLines[ CAPTION_INDEX_TARGET_COLUMN_SUM ] =
+				String.valueOf( statistics.getHeader( ).getTargetColumnSum( ) );
 
-		captionLines[ CAPTION_INDEX_TARGET_PERIOD_IN_MINUTES ] = String.valueOf( statistics.getTargetValuePeriodInMinutes( ) );
+		captionLines[ CAPTION_INDEX_TARGET_PERIOD_IN_MINUTES ] =
+				String.valueOf( statistics.getHeader( ).getTargetValuePeriodInMinutes( ) );
 
-		captionLines[ CAPTION_INDEX_EXPIRATION_PERIOD_IN_MINUTES ] = String.valueOf( statistics.getExpirationPeriodInMinutes( ) );
+		captionLines[ CAPTION_INDEX_EXPIRATION_PERIOD_IN_MINUTES ] =
+				String.valueOf( statistics.getHeader( ).getExpirationPeriodInMinutes( ) );
 
 
 		for ( String captionLine : captionLines )
