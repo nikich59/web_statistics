@@ -1,0 +1,16 @@
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<fx:root type="javafx.scene.layout.StackPane" xmlns="http://javafx.com/javafx/8.0.112"
+		 xmlns:fx="http://javafx.com/fxml/1">
+	<MenuBar>
+		<menus>
+			<Menu text="file">
+				<items>
+					<MenuItem text="add" onAction="#menuFileAddClicked">
+					</MenuItem>
+				</items>
+			</Menu>
+		</menus>
+	</MenuBar>
+</fx:root>

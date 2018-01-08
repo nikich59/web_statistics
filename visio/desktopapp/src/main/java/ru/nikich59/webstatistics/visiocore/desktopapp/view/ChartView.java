@@ -9,17 +9,16 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.StackPane;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
 import javafx.util.StringConverter;
 import ru.nikich59.webstatistics.visiocore.desktopapp.controller.VisioChartController;
+import ru.nikich59.webstatistics.visiocore.model.series.Series;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.List;
 
-import static ru.nikich59.webstatistics.visiocore.desktopapp.FXMLLoader.loadFxmlInto;
+import ru.nikich59.webstatistics.visiocore.desktopapp.FXMLLoader;
 
 /**
  * Created by Nikita on 30.12.2017.
@@ -33,70 +32,39 @@ public class ChartView extends BasicVisioView
 		this.controller = controller;
 	}
 
-	public enum ChartingMode
-	{
-		LINE_CHART,
-		AREA_CHART;
-
-		private static final String LINE_CHART_STRING = "Line chart";
-		private static final String AREA_CHART_STRING = "Area chart";
-
-		public static ChartingMode fromString( String s )
-		{
-			for ( ChartingMode mode : ChartingMode.values( ) )
-			{
-				if ( mode.toString( ).equals( s ) )
-				{
-					return mode;
-				}
-			}
-
-			return null;
-		}
-
-		@Override
-		public String toString( )
-		{
-			switch ( this )
-			{
-				case LINE_CHART:
-					return LINE_CHART_STRING;
-				case AREA_CHART:
-					return AREA_CHART_STRING;
-			}
-
-			return super.toString( );
-		}
-	}
-
 
 	@FXML
 	private StackPane chartStackPane;
-/*
-	private Line verticalLine = new Line( );
-	private Line horizontalLine = new Line( );
-*/
-	private Rectangle rectangle = new Rectangle( 0, 0 );
 
 
 	private XYChart < Number, Number > chart;
-	private VisioChartController controller;
 
-	private boolean doAllowXAxisZoom = true;
-	private boolean doAllowYAxisZoom = false;
+	public VisioChartController getController( )
+	{
+		return controller;
+	}
+
+	private VisioChartController controller;
 
 
 	public ChartView( )
 			throws IOException
 	{
-		loadFxmlInto( getClass( ).getResource( "visio_chart_view.fxml" ), this );
+		javafx.fxml.FXMLLoader fxmlLoader = new javafx.fxml.FXMLLoader(
+				getClass( ).getResource( "visio_chart_view.fxml" ) );
+		fxmlLoader.setRoot( this );
+		fxmlLoader.setController( this );
+
+		fxmlLoader.load( );
+		/*
+		FXMLLoader.loadFxmlInto( getClass( ).getResource( "visio_chart_view.fxml" ), this );*/
 
 		initializeUI( );
 	}
 
 	private void initializeUI( )
 	{
-		setChartingMode( ChartingMode.LINE_CHART );
+		setChartingMode( VisioChartController.ChartingMode.LINE_CHART );
 
 		setOnScroll( ( event ) ->
 				controller.onScrollEvent( event )
@@ -113,44 +81,14 @@ public class ChartView extends BasicVisioView
 		chart.setOnMouseDragged( ( event ) ->
 				controller.onMouseMoveEvent( event )
 		);
-
-		chart.setOnMouseMoved( ( event ) ->
-				{
-					double x = event.getX( );
-//					System.out.println( x );
-
-					Line verticalLine = new Line( x, x, x + 100, x - 100 );
-					Line horizontalLine = new Line( x + 200, x + 200, x - 100, x + 100 );
-/*
-					verticalLine.setStartX( x );
-					verticalLine.setStartY( x );
-
-					verticalLine.setEndX( x + 100 );
-					verticalLine.setEndY( x + 100 );
-*/
-/*
-					chartStackPane.requestLayout( );
-					requestLayout( );
-
-					chartStackPane.requestLayout( );
-					requestLayout( );
-					chartStackPane.getChildren( ).add( rectangle );
-					chartStackPane.requestLayout( );
-					requestLayout( );
-					chartStackPane.getChildren( ).remove( rectangle );
-					chartStackPane.requestLayout( );
-					requestLayout( );
-					chartStackPane.getChildren( ).setAll( chart, verticalLine, horizontalLine );
-
-					requestLayout( );
-					chartStackPane.requestLayout( );
-
-					System.out.println( verticalLine );*/
-				}
-		);
 	}
 
-	public void setChartingMode( ChartingMode chartingMode )
+	public void setData( List < XYChart.Series < Number, Number > > seriesList )
+	{
+		chart.getData( ).setAll( seriesList );
+	}
+
+	public void setChartingMode( VisioChartController.ChartingMode chartingMode )
 	{
 		ObservableList < XYChart.Series < Number, Number > > oldData = FXCollections.observableArrayList( );
 		NumberAxis oldXAxis = new NumberAxis( );
@@ -234,17 +172,17 @@ public class ChartView extends BasicVisioView
 
 	public void zoomIn( )
 	{
-		if ( doAllowXAxisZoom )
+		if ( controller.allowXAxisZoom( ) )
 		{
 			zoomAxis( ( NumberAxis ) chart.getXAxis( ), 1.0 / 1.1 );
 
-			if ( ! doAllowYAxisZoom )
+			if ( ! controller.allowYAxisZoom( ) )
 			{
 				autoRangeYAxisInScope( );
 			}
 		}
 
-		if ( doAllowYAxisZoom )
+		if ( controller.allowYAxisZoom( ) )
 		{
 			zoomAxis( ( NumberAxis ) chart.getYAxis( ), 1.0 / 1.1 );
 		}
@@ -252,17 +190,17 @@ public class ChartView extends BasicVisioView
 
 	public void zoomOut( )
 	{
-		if ( doAllowXAxisZoom )
+		if ( controller.allowXAxisZoom( ) )
 		{
 			zoomAxis( ( NumberAxis ) chart.getXAxis( ), 1.1 );
 
-			if ( ! doAllowYAxisZoom )
+			if ( ! controller.allowYAxisZoom( ) )
 			{
 				autoRangeYAxisInScope( );
 			}
 		}
 
-		if ( doAllowYAxisZoom )
+		if ( controller.allowYAxisZoom( ) )
 		{
 			zoomAxis( ( NumberAxis ) chart.getYAxis( ), 1.1 );
 		}
@@ -270,17 +208,17 @@ public class ChartView extends BasicVisioView
 
 	public void moveCenter( Point2D moveVector )
 	{
-		if ( doAllowXAxisZoom )
+		if ( controller.allowXAxisZoom( ) )
 		{
 			moveAxisRelatively( ( NumberAxis ) chart.getXAxis( ), moveVector.getX( ) / chart.getWidth( ) );
 
-			if ( ! doAllowYAxisZoom )
+			if ( ! controller.allowYAxisZoom( ) )
 			{
 				autoRangeYAxisInScope( );
 			}
 		}
 
-		if ( doAllowYAxisZoom )
+		if ( controller.allowYAxisZoom( ) )
 		{
 			moveAxisRelatively( ( NumberAxis ) chart.getYAxis( ), moveVector.getY( ) / chart.getHeight( ) );
 		}

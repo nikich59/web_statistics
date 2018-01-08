@@ -3,7 +3,10 @@ package ru.nikich59.webstatistics.visiocore.model;
 import ru.nikich59.webstatistics.visiocore.model.series.PlainSeries;
 import ru.nikich59.webstatistics.visiocore.model.series.Series;
 import stats.Statistics;
+import stats.controller.StatsController;
+import stats.controller.StatsControllerFactory;
 
+import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,17 +20,26 @@ public class Model
 {
 	public static class StatisticsSeries
 	{
-		public Series< Number, Number > series;
+		public Series < Number, Number > series;
 		public ZonedDateTime seriesBeginDateTime;
 		public String id = "";
 		public boolean isEnabled;
-		public Statistics statistics;
+		public Statistics.StatisticsHeader statisticsHeader;
 	}
 
+	private List < String > statisticsDirectories = new ArrayList <>( );
 
 	private List < StatisticsSeries > statisticsSeries = new ArrayList <>( );
 
-	public void addStatistics( Statistics statistics )
+	public void loadStatisticsWithController( StatsController statsController )
+			throws IOException
+	{
+		statsController.loadStatistics( );
+
+		addStatistics( statsController.getStatistics( ) );
+	}
+
+	private void addStatistics( Statistics statistics )
 	{
 		List < Statistics.DataPoint > dataPoints = statistics.getDataPoints( );
 
@@ -41,7 +53,7 @@ public class Model
 			StatisticsSeries series = new StatisticsSeries( );
 			series.id = String.valueOf( statisticsSeries.size( ) );
 			series.isEnabled = false;
-			series.seriesBeginDateTime = statistics.getInitialDateTime( );
+			series.seriesBeginDateTime = statistics.getHeader( ).getInitialDateTime( );
 
 			List < Number > xAxis = new ArrayList <>( );
 			List < Number > yAxis = new ArrayList <>( );
@@ -60,7 +72,7 @@ public class Model
 			}
 
 			PlainSeries < Number, Number > plainSeries = new PlainSeries <>( );
-			plainSeries.setName( statistics.getColumnNames( ).get( columnIndex ) );
+			plainSeries.setName( statistics.getHeader( ).getColumnNames( ).get( columnIndex ) );
 			plainSeries.setxAxis( xAxis );
 			plainSeries.setyAxis( yAxis );
 
@@ -76,16 +88,19 @@ public class Model
 
 
 			series.series = plainSeries;
-			series.statistics = statistics;
+			series.statisticsHeader = statistics.getHeader( );
 
 			statisticsSeries.add( series );
 		}
 	}
 
-	public void addSeries( StatisticsSeries series )
+	public void addSeries( Series < Number, Number > series, ZonedDateTime seriesBeginDateTime )
 	{
-		series.id = String.valueOf( statisticsSeries.size( ) );
-		statisticsSeries.add( series );
+		StatisticsSeries newStatisticsSeries = new StatisticsSeries( );
+		newStatisticsSeries.series = series;
+		newStatisticsSeries.id = String.valueOf( statisticsSeries.size( ) );
+		newStatisticsSeries.seriesBeginDateTime = seriesBeginDateTime;
+		statisticsSeries.add( newStatisticsSeries );
 	}
 
 	public void clearSeries( )
@@ -95,21 +110,6 @@ public class Model
 
 	public List < StatisticsSeries > getData( )
 	{
-		return Collections.unmodifiableList( statisticsSeries );
-	}
-
-	public List < StatisticsSeries > getDrawableData( )
-	{
-		List < StatisticsSeries > statisticsSeries = new ArrayList <>( );
-
-		for ( StatisticsSeries series : this.statisticsSeries )
-		{
-			if ( series.isEnabled )
-			{
-				statisticsSeries.add( series );
-			}
-		}
-
 		return Collections.unmodifiableList( statisticsSeries );
 	}
 
@@ -126,5 +126,24 @@ public class Model
 		}
 
 		return false;
+	}
+
+	public void addStatisticsDirectory( String statisticsDirectory )
+	{
+		statisticsDirectories.add( statisticsDirectory );
+	}
+
+	public List < StatsController > getAvailableControllers( )
+	{
+		List < StatsController > availableControllers = new ArrayList <>( );
+
+		StatsControllerFactory factory = new StatsControllerFactory( );
+
+		for ( String statisticsDirectory : statisticsDirectories )
+		{
+			availableControllers.addAll( factory.listStatsInDirectory( statisticsDirectory ) );
+		}
+
+		return availableControllers;
 	}
 }

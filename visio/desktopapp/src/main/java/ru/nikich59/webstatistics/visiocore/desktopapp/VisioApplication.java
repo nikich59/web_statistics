@@ -4,9 +4,8 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import ru.nikich59.webstatistics.visiocore.desktopapp.controller.VisioController;
-import ru.nikich59.webstatistics.visiocore.desktopapp.errohandler.ConsoleErrorHandler;
-import ru.nikich59.webstatistics.visiocore.desktopapp.errohandler.ErrorHandler;
-import ru.nikich59.webstatistics.visiocore.desktopapp.model.bridge.ModelToDesktopAppBridge;
+import ru.nikich59.webstatistics.visiocore.errohandler.ConsoleErrorHandler;
+import ru.nikich59.webstatistics.visiocore.errohandler.ErrorHandler;
 import ru.nikich59.webstatistics.visiocore.desktopapp.view.VisioView;
 import ru.nikich59.webstatistics.visiocore.model.Model;
 
@@ -28,7 +27,7 @@ public class VisioApplication extends Application
 
 		try
 		{
-			visioView = new VisioView( null );
+			visioView = new VisioView( );
 		}
 		catch ( Exception e )
 		{
@@ -37,10 +36,8 @@ public class VisioApplication extends Application
 		}
 		visioView.setErrorHandler( errorHandler );
 
-		ModelToDesktopAppBridge modelToDesktopAppBridge = new ModelToDesktopAppBridge( visioView, visioModel );
-
-		VisioController visioController = new VisioController( visioModel, modelToDesktopAppBridge );
-		visioController.setStatisticsDirectory( "C:\\Java\\webstatistics\\statister\\stats2\\statisters\\" );
+		VisioController visioController = new VisioController( visioModel, visioView, errorHandler );
+		visioModel.addStatisticsDirectory( "C:\\Java\\webstatistics\\statister\\stats2\\statisters\\" );
 
 		visioView.setController( visioController );
 
@@ -49,14 +46,10 @@ public class VisioApplication extends Application
 		visioView.getChartYAxis( ).setForceZeroInRange( false );
 */
 
-		modelToDesktopAppBridge.updateView( );
-
 		Scene scene = new Scene( visioView, 600, 400 );
 
 		stage.setScene( scene );
 		stage.show( );
-
-		visioController.updateModel( );
 	}
 
 
