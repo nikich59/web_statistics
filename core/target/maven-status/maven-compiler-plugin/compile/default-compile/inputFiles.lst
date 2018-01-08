@@ -1,6 +1,6 @@
-C:\main\projects\webstatistics\web_statistics\core\src\main\java\stats\controller\StatsController.java
-C:\main\projects\webstatistics\web_statistics\core\src\main\java\stats\controller\StatsControllerFactory.java
-C:\main\projects\webstatistics\web_statistics\core\src\main\java\stats\Statistics.java
-C:\main\projects\webstatistics\web_statistics\core\src\main\java\stats\DataType.java
-C:\main\projects\webstatistics\web_statistics\core\src\main\java\stats\controller\StatsFileController.java
-C:\main\projects\webstatistics\web_statistics\core\src\main\java\stats\StatsFile.java
+/Users/meow/Projects/web_statistics/web_statistics/core/src/main/java/stats/DataType.java
+/Users/meow/Projects/web_statistics/web_statistics/core/src/main/java/stats/StatsFile.java
+/Users/meow/Projects/web_statistics/web_statistics/core/src/main/java/stats/controller/StatsControllerFactory.java
+/Users/meow/Projects/web_statistics/web_statistics/core/src/main/java/stats/controller/StatsController.java
+/Users/meow/Projects/web_statistics/web_statistics/core/src/main/java/stats/controller/StatsFileController.java
+/Users/meow/Projects/web_statistics/web_statistics/core/src/main/java/stats/Statistics.java

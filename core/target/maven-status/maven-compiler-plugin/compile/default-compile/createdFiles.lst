@@ -1,8 +1,8 @@
-stats\DataType$1.class
-stats\controller\StatsFileController.class
-stats\DataType.class
-stats\controller\StatsControllerFactory.class
-stats\Statistics.class
-stats\StatsFile.class
-stats\Statistics$DataPoint.class
-stats\controller\StatsController.class
+stats/DataType.class
+stats/controller/StatsFileController.class
+stats/DataType$1.class
+stats/Statistics$DataPoint.class
+stats/Statistics.class
+stats/controller/StatsControllerFactory.class
+stats/StatsFile.class
+stats/controller/StatsController.class
