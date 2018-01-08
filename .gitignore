@@ -1,2 +1,4 @@
 *.stats
 .idea
+visio/target
+core/target
