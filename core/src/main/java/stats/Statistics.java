@@ -173,7 +173,7 @@ public class Statistics
 	}
 
 
-	private StatisticsHeader header;
+	private StatisticsHeader header = new StatisticsHeader( );
 	private List < DataPoint > dataPoints = new ArrayList <>( );
 
 

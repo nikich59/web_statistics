@@ -241,7 +241,8 @@ public class SiteStatisticsAcquirer implements Comparable < SiteStatisticsAcquir
 	@Override
 	public int compareTo( SiteStatisticsAcquirer other )
 	{
-		return other.statsController.getStatisticsId( ).compareTo( getStatisticsId( ) );
+		return other.statsController.getStatistics( ).getHeader( ).getStatisticsId( ).compareTo(
+				getStatisticsId( ) );
 	}
 
 	public SiteStatisticsAcquirer( StatsController statsController )
@@ -283,7 +284,7 @@ public class SiteStatisticsAcquirer implements Comparable < SiteStatisticsAcquir
 
 	public String getStatisticsId( )
 	{
-		return statsController.getStatisticsId( );
+		return statsController.getStatistics( ).getHeader( ).getStatisticsId( );
 	}
 
 	public void setSiteDescriptor( SiteDescriptor siteDescriptor )

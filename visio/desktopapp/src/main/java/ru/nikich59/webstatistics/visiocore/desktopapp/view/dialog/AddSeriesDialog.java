@@ -6,11 +6,11 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Dialog;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import ru.nikich59.webstatistics.visiocore.model.series.Series;
 import ru.nikich59.webstatistics.visiocore.desktopapp.view.editview.DiffSeriesEditVeiw;
 import ru.nikich59.webstatistics.visiocore.desktopapp.view.editview.MultiplySeriesEditView;
 import ru.nikich59.webstatistics.visiocore.desktopapp.view.editview.RateSeriesEditView;
 import ru.nikich59.webstatistics.visiocore.desktopapp.view.editview.SeriesEditView;
+import ru.nikich59.webstatistics.visiocore.model.series.Series;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -4,11 +4,11 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
-import ru.nikich59.webstatistics.visiocore.desktopapp.errohandler.ErrorHandler;
 import ru.nikich59.webstatistics.visiocore.desktopapp.view.StatisticsInfoView;
 import stats.controller.StatsController;
 import stats.controller.StatsControllerFactory;
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -22,25 +22,14 @@ public class AddStatisticsDialog extends Dialog < StatsController >
 
 	private StatsController result = null;
 
-	public AddStatisticsDialog( String directory, ErrorHandler errorHandler )
+	public AddStatisticsDialog( List < StatsController > availableStatistics )
+			throws IOException
 	{
-		StatsControllerFactory factory = new StatsControllerFactory( );
-		List < StatsController > controllerList = factory.listStatsInDirectory( directory );
-
-		for ( StatsController statsController : controllerList )
+		for ( StatsController statsController : availableStatistics )
 		{
 			StatisticsInfoView statisticsView;
 
-			try
-			{
-				statisticsView = new StatisticsInfoView( statsController );
-			}
-			catch ( Exception e )
-			{
-				errorHandler.handleException( e );
-
-				continue;
-			}
+			statisticsView = new StatisticsInfoView( statsController.getStatistics( ).getHeader( ) );
 
 			statisticsView.setOnMouseClicked( ( event ) ->
 					{

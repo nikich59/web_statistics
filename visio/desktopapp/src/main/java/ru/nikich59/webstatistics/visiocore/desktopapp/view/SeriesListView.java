@@ -2,6 +2,7 @@ package ru.nikich59.webstatistics.visiocore.desktopapp.view;
 
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
+import ru.nikich59.webstatistics.visiocore.desktopapp.FXMLLoader;
 import ru.nikich59.webstatistics.visiocore.desktopapp.controller.SeriesListController;
 import ru.nikich59.webstatistics.visiocore.desktopapp.view.dialog.AddSeriesDialog;
 import ru.nikich59.webstatistics.visiocore.model.Model;
@@ -27,18 +28,14 @@ public class SeriesListView extends BasicVisioView
 	public SeriesListView( )
 			throws IOException
 	{
-		System.out.println( getClass( ).getResource(
-				"series_view.fxml" ) );
-
-
-		javafx.fxml.FXMLLoader fxmlLoader = new javafx.fxml.FXMLLoader( getClass( ).getResource(
-				"series_view.fxml" ) );
+		javafx.fxml.FXMLLoader fxmlLoader = new javafx.fxml.FXMLLoader(
+				getClass( ).getResource( "series_list_view.fxml" ) );
 		fxmlLoader.setRoot( this );
 		fxmlLoader.setController( this );
 
 		fxmlLoader.load( );
 		/*
-		loadFxmlInto( getClass( ).getResource( "series_view.fxml" ), this );*/
+		FXMLLoader.loadFxmlInto( getClass( ).getResource( "series_list_view.fxml" ), this );*/
 	}
 
 	public void update( List < Model.StatisticsSeries > statisticsSeries )
@@ -67,24 +64,7 @@ public class SeriesListView extends BasicVisioView
 	@FXML
 	public void addSeriesButtonClicked( )
 	{
-		List < Series < Number, Number > > seriesList = new ArrayList <>( );
-
-		for ( Model.StatisticsSeries statisticsSeries : statisticsSeries )
-		{
-			seriesList.add( statisticsSeries.series );
-		}
-
-		AddSeriesDialog addSeriesDialog = new AddSeriesDialog( seriesList );
-
-		Optional < Series < Number, Number > > result = addSeriesDialog.showAndWait( );
-
-		result.ifPresent( ( series ) ->
-				{
-					Model.StatisticsSeries statisticsSeries = new Model.StatisticsSeries( );
-					statisticsSeries.series = series;
-					controller.addSeries( statisticsSeries );
-				}
-		);
+		controller.addSeriesEvent( );
 	}
 }
 

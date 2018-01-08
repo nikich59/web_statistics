@@ -13,10 +13,6 @@ public class FXMLLoader
 	public static final void loadFxmlInto( URL fxmlFilePath, Parent parent )
 			throws IOException
 	{
-		System.out.println( fxmlFilePath );
-
-
-
 		javafx.fxml.FXMLLoader fxmlLoader = new javafx.fxml.FXMLLoader( fxmlFilePath );
 		fxmlLoader.setRoot( parent );
 		fxmlLoader.setController( parent );

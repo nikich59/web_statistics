@@ -3,11 +3,11 @@ package ru.nikich59.webstatistics.visiocore.desktopapp.view;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
-import stats.controller.StatsController;
+import stats.Statistics;
 
 import java.io.IOException;
 
-import static ru.nikich59.webstatistics.visiocore.desktopapp.FXMLLoader.loadFxmlInto;
+import ru.nikich59.webstatistics.visiocore.desktopapp.FXMLLoader;
 
 /**
  * Created by Nikita on 01.01.2018.
@@ -17,15 +17,18 @@ public class StatisticsInfoView extends StackPane
 	@FXML
 	private Label titleLabel;
 
-	private StatsController controller;
-
-	public StatisticsInfoView( StatsController controller )
+	public StatisticsInfoView( Statistics.StatisticsHeader statisticsHeader )
 			throws IOException
 	{
-		this.controller = controller;
+		javafx.fxml.FXMLLoader fxmlLoader = new javafx.fxml.FXMLLoader(
+				getClass( ).getResource( "statistics_view.fxml" ) );
+		fxmlLoader.setRoot( this );
+		fxmlLoader.setController( this );
 
-		loadFxmlInto( getClass( ).getResource( "statistics_view.fxml" ), this );
+		fxmlLoader.load( );
+		/*
+		FXMLLoader.loadFxmlInto( getClass( ).getResource( "statistics_view.fxml" ), this );*/
 
-		titleLabel.setText( controller.getStatistics( ).getHeader( ).getHeadline( ) );
+		titleLabel.setText( statisticsHeader.getHeadline( ) );
 	}
 }

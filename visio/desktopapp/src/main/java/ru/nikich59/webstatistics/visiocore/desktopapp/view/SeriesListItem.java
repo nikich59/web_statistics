@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import ru.nikich59.webstatistics.visiocore.desktopapp.FXMLLoader;
 import ru.nikich59.webstatistics.visiocore.desktopapp.controller.SeriesListController;
 import ru.nikich59.webstatistics.visiocore.model.Model;
 
@@ -34,8 +35,14 @@ public class SeriesListItem extends BasicVisioView
 		this.series = series;
 		this.controller = controller;
 
-		ru.nikich59.webstatistics.visiocore.desktopapp.FXMLLoader.loadFxmlInto(
-				getClass( ).getResource( "series_list_item.fxml" ), this );
+		javafx.fxml.FXMLLoader fxmlLoader = new javafx.fxml.FXMLLoader(
+				getClass( ).getResource( "series_list_item.fxml" ) );
+		fxmlLoader.setRoot( this );
+		fxmlLoader.setController( this );
+
+		fxmlLoader.load( );
+		/*
+		FXMLLoader.loadFxmlInto( getClass( ).getResource( "series_list_item.fxml" ), this );*/
 
 		initializeUI( );
 	}

@@ -30,7 +30,9 @@ public abstract class StatsController
 
 	public abstract Statistics getStatistics( );
 
-	public abstract List< StatsController > listStatistics( String statisticsDirectory );
+	public abstract Statistics.StatisticsHeader getStatisticsHeader( );
+
+	public abstract List < StatsController > listStatistics( String statisticsDirectory );
 }
 
 

@@ -51,12 +51,12 @@ public class StatsFileController extends StatsController
 		StatsFile statsFile = new StatsFile( );
 		statsFile.setStatistics( statistics );
 
-		String filePath = getFilePath( statistics.getHeader( ) );
+		String filePath = getFilePathForStatistics( statistics.getHeader( ) );
 
 		statsFile.writeToFile( filePath );
 	}
 
-	private static String getFilePath( Statistics.StatisticsHeader statisticsHeader )
+	private static String getFilePathForStatistics( Statistics.StatisticsHeader statisticsHeader )
 	{
 		String filePath = statisticsHeader.getLink( ).
 				replace( " ", "" ).replace( "?", "" ).
@@ -120,6 +120,17 @@ public class StatsFileController extends StatsController
 	public Statistics getStatistics( )
 	{
 		return statistics;
+	}
+
+	@Override
+	public Statistics.StatisticsHeader getStatisticsHeader( )
+	{
+		if ( statistics == null )
+		{
+			return null;
+		}
+
+		return statistics.getHeader( );
 	}
 
 	@Override

@@ -13,6 +13,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import ru.nikich59.webstatistics.visiocore.desktopapp.view.ChartView?>
 <?import javafx.scene.layout.VBox?>
+<?import ru.nikich59.webstatistics.visiocore.desktopapp.view.VisioMenuView?>
 <fx:root type="javafx.scene.layout.StackPane" xmlns="http://javafx.com/javafx/8.0.112"
 		 xmlns:fx="http://javafx.com/fxml/1">
 	<children>
@@ -22,32 +23,24 @@
 						style="-fx-padding: 16px;">
 					<SeriesListView
 							maxWidth="250"
-							fx:id="seriesView">
+							fx:id="seriesListView">
 					</SeriesListView>
 				</StackPane>
 			</left>
 			<top>
-				<MenuBar>
-					<menus>
-						<Menu text="file">
-							<items>
-								<MenuItem text="add" onAction="#menuFileAddClicked">
-								</MenuItem>
-								<MenuItem text="open stats file" onAction="#menuStatsFileClicked">
-								</MenuItem>
-							</items>
-						</Menu>
-					</menus>
-				</MenuBar>
+				<VisioMenuView fx:id="menuView">
+
+				</VisioMenuView>
 			</top>
 			<center>
 
-				<ChartView fx:id="visioChartView">
+				<ChartView fx:id="chartView">
 
 				</ChartView>
 
 			</center>
 			<right>
+				<!--
 				<VBox>
 					<children>
 						<Button text="Auto range" alignment="CENTER" onAction="#autoRange">
@@ -56,6 +49,7 @@
 						</Button>
 					</children>
 				</VBox>
+				-->
 			</right>
 		</BorderPane>
 	</children>
