@@ -1,0 +1,9 @@
+{
+  "sleuth_directory":"stats/sleuth/",
+  "statistics_directory":"stats/statisters/",
+  "finished_statistics_directory":"stats/finished/",
+  "statistics_mode":"stats_files",
+  "report_period_in_millis":1000,
+  "sleuth_timer_period_in_millis":1000,
+  "statister_timer_period_in_millis":1000
+}

@@ -1,0 +1,70 @@
+{
+  "description": "VK community",
+  "parameters": [
+	{
+	  "target_query": "description url",
+	  "description": "VK community full url",
+	  "selector": "^.*$",
+	  "prefix": "",
+	  "postfix": ""
+	},
+	{
+	  "target_query": "description description",
+	  "description": "Description",
+	  "prefix": "",
+	  "postfix": ""
+	}
+  ],
+  "template": {
+	"description": {
+	  "url": "https://vk.com/mudakoff",
+	  "target_url_prefix": "https://vk.com",
+	  "target_url_postfix": "",
+	  "new_id_query": "#page_wall_posts a.post_link $attr$href",
+	  "data_type": "xml",
+	  "description": ""
+	},
+	"period_in_millis": 60000,
+	"title_description": {
+	  "source": "statister",
+	  "parts": [
+		{
+		  "query": "",
+		  "postfix": "MDK: "
+		},
+		{
+		  "query": ".post_video_title",
+		  "postfix": ""
+		},
+		{
+		  "query": ".wall_post_text",
+		  "postfix": ""
+		}
+	  ]
+	},
+	"target_description": {
+	  "url": "",
+	  "data_type": "xml",
+	  "period": 60000,
+	  "data_processing_method": "int",
+	  "headline": "",
+	  "target_value_sum": 20000,
+	  "target_value_period_in_minutes": 1440,
+	  "expiration_period_in_minutes": 10080,
+	  "value_description": [
+		{
+		  "name": "likes",
+		  "query": ".post_like_count"
+		},
+		{
+		  "name": "reposts",
+		  "query": ".post_share_count"
+		},
+		{
+		  "name": "comments",
+		  "query": ".wall_comments_summary"
+		}
+	  ]
+	}
+  }
+}

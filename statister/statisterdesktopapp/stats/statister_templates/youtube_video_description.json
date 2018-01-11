@@ -1,0 +1,40 @@
+{
+  "description": "Youtube video",
+  "parameters": [
+	{
+	  "target_query": "url",
+	  "data_type": "string",
+	  "description": "Youtube channel id",
+	  "selector": "[^=]+$",
+	  "prefix": "https://www.googleapis.com/youtube/v3/videos?part=statistics&id=",
+	  "postfix": "&key=AIzaSyD1yAAiGOS2fygCzie7d5dvWz9pU4EwPlM"
+	}
+  ],
+  "template": {
+	"url": "",
+	"headline": "",
+	"target_value_sum": 20000,
+	"target_value_period_in_minutes": 1440,
+	"data_type": "json",
+	"period": 90000,
+	"expiration_period_in_minutes": 43200,
+	"value_description": [
+	  {
+		"name": "likes",
+		"query": "items/0 statistics likeCount"
+	  },
+	  {
+		"name": "dislikes",
+		"query": "items/0 statistics dislikeCount"
+	  },
+	  {
+		"name": "views",
+		"query": "items/0 statistics viewCount"
+	  },
+	  {
+		"name": "comments",
+		"query": "items/0 statistics commentCount"
+	  }
+	]
+  }
+}

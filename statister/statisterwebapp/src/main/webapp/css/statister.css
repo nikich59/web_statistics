@@ -1,0 +1,58 @@
+.left-half {
+    float: left;
+    width: 48%;
+    height: 800px;
+    background-color: lightsteelblue;
+    overflow: scroll;
+}
+
+.right-half {
+    float: right;
+    width: 48%;
+    height: 800px;
+    background-color: lightsteelblue;
+    overflow: scroll;
+}
+
+.url {
+    text-wrap: normal;
+    word-break: break-all;
+    width: 100%;
+}
+
+.sleuth {
+    margin: 12px;
+    background-color: gainsboro;
+    padding: 8px 16px;
+}
+
+.statister {
+    margin: 12px;
+    background-color: gainsboro;
+    padding: 8px 16px;
+}
+
+.headline {
+    align-content: center;
+    text-align: center;
+}
+
+.sleuth_error {
+    color: red;
+}
+
+.add_sleuth_dialog {
+    /*    width: 400px;
+        height: 300px;*/
+    animation-name: addTemplateDialogAnimation;
+    animation-duration: 300ms;
+}
+
+@keyframes addTemplateDialogAnimation {
+    from {
+        opacity: 0.5;
+    }
+    to {
+        opacity: 1.0;
+    }
+}

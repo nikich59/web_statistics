@@ -28,6 +28,11 @@ public class StatsFileController extends StatsController
 		this.statisticsDirectory = statisticsDirectory;
 	}
 
+	public StatsFileController( )
+	{
+
+	}
+
 	public void setFinishedStatisticsDirectoryPath( String finishedStatisticsDirectoryPath )
 	{
 		this.finishedStatisticsDirectoryPath = finishedStatisticsDirectoryPath;
@@ -51,42 +56,61 @@ public class StatsFileController extends StatsController
 		StatsFile statsFile = new StatsFile( );
 		statsFile.setStatistics( statistics );
 
-		String filePath = getFilePathForStatistics( statistics.getHeader( ) );
+		String filePath = statisticsDirectory;
 
 		statsFile.writeToFile( filePath );
 	}
 
-	private static String getFilePathForStatistics( Statistics.StatisticsHeader statisticsHeader )
-	{
-		String filePath = statisticsHeader.getLink( ).
-				replace( " ", "" ).replace( "?", "" ).
-				replace( ".", "" ).replace( "\\", "" ).
-				replace( "/", "" ).replace( ":", "" ) + "." + FILE_EXTENSION;
-
-		return filePath;
-	}
-
 	@Override
-	public void initStatistics( Statistics statistics )
+	public void initStatistics( Statistics.StatisticsHeader statisticsHeader )
 			throws IOException
 	{
 		StatsFile statsFile = new StatsFile( );
+		Statistics statistics = new Statistics( );
+		statistics.setHeader( statisticsHeader );
 		statsFile.setStatistics( statistics );
 
-		String filePath = statisticsDirectory + statistics.getHeader( ).getLink( ).
-				replace( " ", "" ).replace( "?", "" ).
-				replace( ".", "" ).replace( "\\", "" ).
-				replace( "/", "" ).replace( ":", "" ) + "." + FILE_EXTENSION;
+		this.statistics = statistics;
+
+		String filePath = statisticsDirectory; // + getFileNameForStatistics( statisticsHeader ) + "." + FILE_EXTENSION;
 
 		File file = new File( filePath );
 		if ( ! file.exists( ) )
 		{
-			file.mkdirs( );
+//			file.mkdirs( );
 
 			file.createNewFile( );
 
 			statsFile.writeToFile( filePath );
 		}
+	}
+
+	private static String getFileNameForStatistics( Statistics.StatisticsHeader statisticsHeader )
+	{
+		return statisticsHeader.getUrl( ).
+				replace( " ", "" ).replace( "?", "" ).
+				replace( ".", "" ).replace( "\\", "" ).
+				replace( "/", "" ).replace( ":", "" ) +
+				"." + FILE_EXTENSION;
+	}
+
+	@Override
+	public String getId( )
+	{
+		return statistics.getHeader( ).getStatisticsId( ) + "." + FILE_EXTENSION;
+	}
+
+	@Override
+	public StatsController createStatsController(
+			String statisticsDirectory, Statistics.StatisticsHeader statisticsHeader )
+			throws IOException
+	{
+		StatsFileController newController = new StatsFileController( );
+		newController.setStatisticsDirectory( statisticsDirectory + getFileNameForStatistics( statisticsHeader ) );
+
+		newController.initStatistics( statisticsHeader );
+
+		return newController;
 	}
 
 
@@ -163,6 +187,7 @@ public class StatsFileController extends StatsController
 				}
 				catch ( Exception e )
 				{
+					// TODO: Implement error handling.
 					// Ignoring exception. If exception occurred then file is not valid so just ignoring it.
 				}
 			}

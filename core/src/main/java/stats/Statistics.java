@@ -1,6 +1,8 @@
 package stats;
 
 import com.sun.javafx.UnmodifiableArrayList;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
@@ -23,23 +25,117 @@ public class Statistics
 		}
 	}
 
-	public static class StatisticsHeader
+	public static class StatisticsHeader implements Cloneable
 	{
-		private ZonedDateTime initialDateTime;
-		private String link;
+		private ZonedDateTime initialDateTime = ZonedDateTime.now( );
+		private String url;
 		private String headline;
 		private List < String > columnNames = new ArrayList <>( );
 		private List < String > columnQueries = new ArrayList <>( );
-		private int periodInMillis;
+		private int periodInMillis = 60000;
 		private DataType dataType;
 		private String dataProcessingMethod = "";
-		private long targetColumnSum;
-		private long targetValuePeriodInMinutes;
-		private long expirationPeriodInMinutes;
+		private long targetColumnSum = 1000000000000L;
+		private long targetValuePeriodInMinutes = 60;
+		private long expirationPeriodInMinutes = 60 * 24 * 30; // 30 days
 
 		public StatisticsHeader( )
 		{
-			initialDateTime = ZonedDateTime.now( );
+
+		}
+
+		public StatisticsHeader( StatisticsHeader other )
+		{
+			url = other.url;
+			headline = other.headline;
+			columnNames = new ArrayList <>( other.columnNames );
+			columnQueries = new ArrayList <>( other.columnQueries );
+			dataType = other.dataType;
+			periodInMillis = other.periodInMillis;
+			dataProcessingMethod = other.dataProcessingMethod;
+			targetColumnSum = other.targetColumnSum;
+			targetValuePeriodInMinutes = other.targetValuePeriodInMinutes;
+			expirationPeriodInMinutes = other.expirationPeriodInMinutes;
+		}
+
+		public StatisticsHeader( JSONObject configJson )
+		{
+			url = ( String ) configJson.get( "url" );
+			dataType = DataType.fromString( ( String ) configJson.get( "data_type" ) );
+			periodInMillis = ( int ) ( long ) configJson.get( "period" );
+			if ( configJson.get( "data_processing_method" ) != null )
+			{
+				dataProcessingMethod = ( String ) configJson.get( "data_processing_method" );
+			}
+			else
+			{
+				dataProcessingMethod = "";
+			}
+			if ( configJson.get( "headline" ) != null )
+			{
+				headline = ( String ) configJson.get( "headline" );
+			}
+			else
+			{
+				headline = "";
+			}
+
+			if ( configJson.get( "target_value_sum" ) != null )
+			{
+				targetColumnSum = ( long ) configJson.get( "target_value_sum" );
+
+				if ( configJson.get( "target_value_period_in_minutes" ) != null )
+				{
+					targetValuePeriodInMinutes = ( long ) configJson.get( "target_value_period_in_minutes" );
+				}
+			}
+
+			if ( configJson.get( "expiration_period_in_minutes" ) != null )
+			{
+				expirationPeriodInMinutes = ( long ) configJson.get( "expiration_period_in_minutes" );
+			}
+
+			columnNames = new ArrayList <>( );
+			columnQueries = new ArrayList <>( );
+			JSONArray valueDescriptorsArray = ( JSONArray ) configJson.get( "value_description" );
+			for ( Object valueDescriptorObject : valueDescriptorsArray )
+			{
+				JSONObject valueDescriptorJson = ( JSONObject ) valueDescriptorObject;
+
+				columnNames.add( ( String ) valueDescriptorJson.get( "name" ) );
+				columnQueries.add( ( String ) valueDescriptorJson.get( "query" ) );
+			}
+		}
+
+		public JSONObject getConfigObject( )
+		{
+			JSONObject configObject = new JSONObject( );
+
+			configObject.put( "url", url );
+			configObject.put( "data_type", dataType.toString( ) );
+			configObject.put( "period", periodInMillis );
+			configObject.put( "data_processing_method", dataProcessingMethod );
+			configObject.put( "target_value_sum", targetColumnSum );
+			configObject.put( "target_value_period_in_minutes", targetValuePeriodInMinutes );
+			configObject.put( "expiration_period_in_minutes", expirationPeriodInMinutes );
+
+			configObject.put( "headline", headline );
+
+			JSONArray valueDescriptors = new JSONArray( );
+
+			for ( int columnIndex = 0; columnIndex < columnNames.size( ); columnIndex += 1 )
+			{
+				JSONObject valueDescriptor = new JSONObject( );
+
+				valueDescriptor.put( "name", columnNames.get( columnIndex ) );
+				valueDescriptor.put( "query", columnQueries.get( columnIndex ) );
+
+				valueDescriptors.add( valueDescriptor );
+			}
+
+			configObject.put( "value_description", valueDescriptors );
+
+			return configObject;
 		}
 
 		public void setInitialDateTime( ZonedDateTime initialDateTime )
@@ -52,14 +148,14 @@ public class Statistics
 			return initialDateTime;
 		}
 
-		public void setLink( String link )
+		public void setUrl( String url )
 		{
-			this.link = link;
+			this.url = url;
 		}
 
-		public String getLink( )
+		public String getUrl( )
 		{
-			return link;
+			return url;
 		}
 
 		public void setHeadline( String headline )
@@ -168,7 +264,7 @@ public class Statistics
 
 		public String getStatisticsId( )
 		{
-			return getLink( );
+			return getUrl( );
 		}
 	}
 
@@ -180,6 +276,11 @@ public class Statistics
 	public StatisticsHeader getHeader( )
 	{
 		return header;
+	}
+
+	public void setHeader( StatisticsHeader statisticsHeader )
+	{
+		this.header = statisticsHeader;
 	}
 
 	public void addDataPoint( DataPoint dataPoint )

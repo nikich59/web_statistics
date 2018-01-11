@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Statister</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/statister.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/statister.css"/>
+
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+Statister:
+<br/>
+<br/>
+
+
+<div>
+    <button ng-click="onAddSleuthButtonClick();" style="text-align: center;">Add sleuth</button>
+    <br/>
+    <span class="left-half">
+    <ul style="list-style-type:none; padding-left: 0;">
+        <li class="sleuth" ng-repeat="s in sleuthList"
+            ng-class="{sleuth_error: s.last_error != null, sleuth_no_error : s.last_error == null}">
+            <h1 class="headline" style="text-wrap: normal">{{s.description.description}}</h1>
+            <p class="url">{{s.last_error}}</p>
+            <p class="url">{{s.description.url}}</p>
+            <p>{{s.period_in_millis / 1000.0}} sec</p>
+            <button ng-click="s.onRemoveClick();">Remove</button>
+        </li>
+    </ul>
+</span>
+    <button ng-click="onAddStatisterButtonClick();" style="text-align: center;">Add statister</button>
+    <br/>
+    <span class="right-half">
+    <ul style="list-style-type:none; padding-left: 0;">
+        <li class="statister" ng-repeat="s in statisterList"
+            ng-class="{sleuth_error: s.last_error != null, sleuth_no_error : s.last_error == null}">
+            <h1 class="headline" style="text-wrap: normal">{{s.headline}}</h1>
+            <p class="url">{{s.last_error}}</p>
+            <p class="url">{{s.url}}</p>
+            <p>{{s.period / 1000.0}} sec</p>
+            <p style="text-align: center">
+                <span ng-repeat="v in s.value_description">{{v.name}} </span>
+            </p>
+            <p>
+                <p style="text-align: center" ng-repeat="v in s.value_description">{{v.name}} ( {{v.last_value}} )</p>
+            </p>
+            <button ng-click="s.onRemoveClick();">Remove</button>
+        </li>
+    </ul>
+</span>
+</div>
+
+
+<dialog class=" add_sleuth_dialog" ng-show="add_template">
+    <select id="sleuth_template_select"
+            ng-change="onSelectedSleuthTemplateChanged()"
+            ng-model="myValue">
+        <option ng-repeat="t in templates">{{t.description}}</option>
+    </select>
+    <ul>
+        <li ng-repeat="p in selectedSleuthTemplate.parameters">
+            <p>{{p.description}}</p>
+            <input ng-show="p.data_type.data_type === 'string'"
+                   type="text"
+                   ng-model="p.value"/>
+            <input ng-show="p.data_type.data_type === 'int'"
+                   min="{{p.data_type.min_value}}"
+                   max="{{p.data_type.max_value}}"
+                   type="number"
+                   ng-model="p.value"/>
+        </li>
+    </ul>
+    <button ng-click="onAddTemplateSubmitClick();">Submit</button>
+    <button ng-click="onAddTemplateDialogClose();">Close</button>
+</dialog>
+
+<!--
+<span id="statister">
+
+</span>
+
+
+<script>
+    $(document).ready(function () {
+        $("#statister").load("tmpl/statister.html");
+    });
+
+
+</script>
+-->
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+
+{
+  "description":
+  {
+	"url":"https://ria.ru",
+	"target_url_prefix":"https://ria.ru",
+	"target_url_postfix":"",
+	"new_id_query":".b-index__popular-item a $index$6 $attr$href",
+	"data_type":"xml"
+  },
+  "period_in_millis":30000,
+  "title_description":
+  {
+	"source":"statister",
+	"parts":
+	[
+	  {
+		"query":"",
+		"postfix":"RIA: "
+	  },
+	  {
+		"query":"h1 span",
+		"postfix":""
+	  }
+	]
+  },
+  "target_description":
+  {
+	"data_type":"xml",
+	"data_processing_method":"int",
+	"period":1000,
+	"target_value_sum":10000,
+	"target_value_period_in_minutes":60,
+	"expiration_period_in_minutes":4320,
+	"value_description":
+	[
+	  {
+		"name":"likes",
+		"query":".b-statistic__number $index$2"
+	  },
+	  {
+		"name":"dislikes",
+		"query":".b-statistic__number $index$3"
+	  },
+	  {
+		"name":"comments",
+		"query":".b-statistic__number $index$0"
+	  },
+	  {
+		"name":"views",
+		"query":".b-statistic__number $index$1"
+	  }
+	]
+  }
+}

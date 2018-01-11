@@ -1,5 +1,6 @@
 package stats.controller;
 
+import org.json.simple.JSONObject;
 import stats.Statistics;
 
 import java.io.IOException;
@@ -16,7 +17,7 @@ public abstract class StatsController
 	public abstract void storeStatistics( Statistics statistics )
 			throws IOException;
 
-	public abstract void initStatistics( Statistics statistics )
+	public abstract void initStatistics( Statistics.StatisticsHeader statisticsHeader )
 			throws IOException;
 
 	public abstract void finish( )
@@ -28,11 +29,17 @@ public abstract class StatsController
 	public abstract void loadStatistics( )
 			throws IOException;
 
+	public abstract String getId( );
+
 	public abstract Statistics getStatistics( );
 
 	public abstract Statistics.StatisticsHeader getStatisticsHeader( );
 
-	public abstract List < StatsController > listStatistics( String statisticsDirectory );
+	public abstract List < StatsController > listStatistics( String directory );
+
+	public abstract StatsController createStatsController(
+			String directory, Statistics.StatisticsHeader statisticsHeader )
+		throws IOException;
 }
 
 

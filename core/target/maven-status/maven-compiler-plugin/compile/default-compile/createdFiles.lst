@@ -1,5 +1,7 @@
 stats\DataType$1.class
+stats\controller\StatsControllerFactory$Mode.class
 stats\controller\StatsFileController.class
+stats\controller\StatsControllerFactory$1.class
 stats\DataType.class
 stats\controller\StatsControllerFactory.class
 stats\Statistics$StatisticsHeader.class

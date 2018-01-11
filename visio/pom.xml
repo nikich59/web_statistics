@@ -20,6 +20,7 @@
 		<module>desktopapp</module>
 		<module>webapp</module>
 		<module>visiocore</module>
+		<module>desktopcore</module>
 	</modules>
 
 	<build>

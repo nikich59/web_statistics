@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import ru.nikich59.webstatistics.statister.desktopapp.view.SleuthListView?>
+<?import ru.nikich59.webstatistics.statister.desktopapp.view.StatisterListView?>
+<fx:root type="javafx.scene.layout.StackPane" xmlns="http://javafx.com/javafx/8.0.112"
+		 xmlns:fx="http://javafx.com/fxml/1">
+	<children>
+		<BorderPane>
+			<top>
+				<HBox alignment="CENTER">
+					<children>
+						<Button
+								fx:id="addSleuthButton"
+								text="add sleuth"
+								onAction="#onAddSleuthEvent">
+
+						</Button>
+						<Button
+								fx:id="addStatisterButton"
+								text="add statister"
+								onAction="#onAddStatisterEvent">
+
+						</Button>
+					</children>
+				</HBox>
+			</top>
+			<left>
+				<ScrollPane
+						vbarPolicy="ALWAYS">
+					<SleuthListView
+							fx:id="sleuthListView">
+
+					</SleuthListView>
+				</ScrollPane>
+			</left>
+			<center>
+				<Separator
+						orientation="VERTICAL">
+
+				</Separator>
+			</center>
+			<right>
+				<ScrollPane
+						vbarPolicy="ALWAYS">
+					<StatisterListView
+							fx:id="statisterListView">
+
+					</StatisterListView>
+				</ScrollPane>
+			</right>
+		</BorderPane>
+	</children>
+</fx:root>

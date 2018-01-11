@@ -45,7 +45,7 @@ public class StatsFile
 		File file = new File( fileName );
 		if ( ! file.exists( ) || ! file.isFile( ) )
 		{
-			throw new IOException( "File does not exist" );
+			throw new IOException( "File \'" + file.getAbsolutePath( ) + "\' does not exist" );
 		}
 
 		StatsFile statsFile = new StatsFile( );
@@ -83,7 +83,7 @@ public class StatsFile
 
 
 			statsFile.statistics.getHeader( ).setInitialDateTime( ZonedDateTime.parse( initialTimeStamp ) );
-			statsFile.statistics.getHeader( ).setLink( link );
+			statsFile.statistics.getHeader( ).setUrl( link );
 			statsFile.statistics.getHeader( ).setHeadline( headline );
 			statsFile.statistics.getHeader( ).setColumnNames( columnNamesArray );
 			statsFile.statistics.getHeader( ).setColumnQueries( columnQueriesList );
@@ -91,8 +91,10 @@ public class StatsFile
 			statsFile.statistics.getHeader( ).setDataType( DataType.fromString( dataTypeString ) );
 			statsFile.statistics.getHeader( ).setDataProcessingMethod( dataProcessingMethodString );
 			statsFile.statistics.getHeader( ).setTargetColumnSum( Long.parseLong( targetColumnSumString ) );
-			statsFile.statistics.getHeader( ).setTargetValuePeriodInMinutes( Long.parseLong( targetValuePeriodInMinutesString ) );
-			statsFile.statistics.getHeader( ).setExpirationPeriodInMinutes( Long.parseLong( expirationPeriodInMinutesString ) );
+			statsFile.statistics.getHeader( )
+					.setTargetValuePeriodInMinutes( Long.parseLong( targetValuePeriodInMinutesString ) );
+			statsFile.statistics.getHeader( )
+					.setExpirationPeriodInMinutes( Long.parseLong( expirationPeriodInMinutesString ) );
 		}
 		catch ( Exception e )
 		{
@@ -213,7 +215,7 @@ public class StatsFile
 
 		captionLines[ CAPTION_INDEX_INITIAL_DATETIME_LINE ] =
 				statistics.getHeader( ).getInitialDateTime( ).toString( );
-		captionLines[ CAPTION_INDEX_LINK ] = statistics.getHeader( ).getLink( );
+		captionLines[ CAPTION_INDEX_LINK ] = statistics.getHeader( ).getUrl( );
 		captionLines[ CAPTION_INDEX_HEADLINE ] = statistics.getHeader( ).getHeadline( );
 
 		captionLines[ CAPTION_INDEX_COLUMN_NAMES ] = TIMESTAMP_COLUMN_NAME;
@@ -248,6 +250,7 @@ public class StatsFile
 
 		for ( String captionLine : captionLines )
 		{
+			captionLine = captionLine.replace( "\n", "" );
 			caption += captionLine + System.lineSeparator( );
 		}
 
@@ -267,7 +270,7 @@ public class StatsFile
 
 		fileWriter.write( getCaption( ) );
 
-		for ( Statistics.DataPoint dataPoint : statistics.getDataPoints() )
+		for ( Statistics.DataPoint dataPoint : statistics.getDataPoints( ) )
 		{
 			fileWriter.write( dataPointToLine( dataPoint ) );
 		}
