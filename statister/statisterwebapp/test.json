@@ -1,0 +1,193 @@
+{
+  "items": [
+	{
+	  "data_processing_method": "",
+	  "period": 60000,
+	  "data_type": "json",
+	  "expiration_period_in_minutes": 20160,
+	  "value_description": [
+		{
+		  "query": "items\/0 statistics likeCount",
+		  "name": "likes"
+		},
+		{
+		  "query": "items\/0 statistics dislikeCount",
+		  "name": "dislikes"
+		},
+		{
+		  "query": "items\/0 statistics viewCount",
+		  "name": "views"
+		},
+		{
+		  "query": "items\/0 statistics commentCount",
+		  "name": "comments"
+		}
+	  ],
+	  "target_value_period_in_minutes": 60,
+	  "url": "https:\/\/www.googleapis.com\/youtube\/v3\/videos?part=statistics&id=3IvuG0y8T2k&key=AIzaSyD1yAAiGOS2fygCzie7d5dvWz9pU4EwPlM",
+	  "target_value_sum": 0
+	},
+	{
+	  "data_processing_method": "",
+	  "period": 90000,
+	  "data_type": "json",
+	  "expiration_period_in_minutes": 20160,
+	  "value_description": [
+		{
+		  "query": "items\/0 statistics likeCount",
+		  "name": "likes"
+		},
+		{
+		  "query": "items\/0 statistics dislikeCount",
+		  "name": "dislikes"
+		},
+		{
+		  "query": "items\/0 statistics viewCount",
+		  "name": "views"
+		},
+		{
+		  "query": "items\/0 statistics commentCount",
+		  "name": "comments"
+		}
+	  ],
+	  "target_value_period_in_minutes": 60,
+	  "url": "https:\/\/www.googleapis.com\/youtube\/v3\/videos?part=statistics&id=CoDx5dKAPSM&key=AIzaSyD1yAAiGOS2fygCzie7d5dvWz9pU4EwPlM",
+	  "target_value_sum": 0
+	},
+	{
+	  "data_processing_method": "",
+	  "period": 90000,
+	  "data_type": "json",
+	  "expiration_period_in_minutes": 20160,
+	  "value_description": [
+		{
+		  "query": "items\/0 statistics likeCount",
+		  "name": "likes"
+		},
+		{
+		  "query": "items\/0 statistics dislikeCount",
+		  "name": "dislikes"
+		},
+		{
+		  "query": "items\/0 statistics viewCount",
+		  "name": "views"
+		},
+		{
+		  "query": "items\/0 statistics commentCount",
+		  "name": "comments"
+		}
+	  ],
+	  "target_value_period_in_minutes": 60,
+	  "url": "https:\/\/www.googleapis.com\/youtube\/v3\/videos?part=statistics&id=Gasrlh1MD74&key=AIzaSyD1yAAiGOS2fygCzie7d5dvWz9pU4EwPlM",
+	  "target_value_sum": 0
+	},
+	{
+	  "data_processing_method": "",
+	  "period": 60000,
+	  "data_type": "json",
+	  "expiration_period_in_minutes": 43200,
+	  "value_description": [
+		{
+		  "query": "items\/0 statistics likeCount",
+		  "name": "likes"
+		},
+		{
+		  "query": "items\/0 statistics dislikeCount",
+		  "name": "dislikes"
+		},
+		{
+		  "query": "items\/0 statistics viewCount",
+		  "name": "views"
+		},
+		{
+		  "query": "items\/0 statistics commentCount",
+		  "name": "comments"
+		}
+	  ],
+	  "target_value_period_in_minutes": 60,
+	  "url": "https:\/\/www.googleapis.com\/youtube\/v3\/videos?part=statistics&id=PYjehPH3Y78&key=AIzaSyD1yAAiGOS2fygCzie7d5dvWz9pU4EwPlM",
+	  "target_value_sum": 0
+	},
+	{
+	  "data_processing_method": "",
+	  "period": 90000,
+	  "data_type": "json",
+	  "expiration_period_in_minutes": 43200,
+	  "value_description": [
+		{
+		  "query": "items\/0 statistics likeCount",
+		  "name": "likes"
+		},
+		{
+		  "query": "items\/0 statistics dislikeCount",
+		  "name": "dislikes"
+		},
+		{
+		  "query": "items\/0 statistics viewCount",
+		  "name": "views"
+		},
+		{
+		  "query": "items\/0 statistics commentCount",
+		  "name": "comments"
+		}
+	  ],
+	  "target_value_period_in_minutes": 60,
+	  "url": "https:\/\/www.googleapis.com\/youtube\/v3\/videos?part=statistics&id=SUMFmOpFw7w&key=AIzaSyD1yAAiGOS2fygCzie7d5dvWz9pU4EwPlM",
+	  "target_value_sum": 0
+	},
+	{
+	  "data_processing_method": "",
+	  "period": 90000,
+	  "data_type": "json",
+	  "expiration_period_in_minutes": 43200,
+	  "value_description": [
+		{
+		  "query": "items\/0 statistics likeCount",
+		  "name": "likes"
+		},
+		{
+		  "query": "items\/0 statistics dislikeCount",
+		  "name": "dislikes"
+		},
+		{
+		  "query": "items\/0 statistics viewCount",
+		  "name": "views"
+		},
+		{
+		  "query": "items\/0 statistics commentCount",
+		  "name": "comments"
+		}
+	  ],
+	  "target_value_period_in_minutes": 60,
+	  "url": "https:\/\/www.googleapis.com\/youtube\/v3\/videos?part=statistics&id=tLF6X2ZOjIc&key=AIzaSyD1yAAiGOS2fygCzie7d5dvWz9pU4EwPlM",
+	  "target_value_sum": 0
+	},
+	{
+	  "data_processing_method": "",
+	  "period": 60000,
+	  "data_type": "json",
+	  "expiration_period_in_minutes": 43200,
+	  "value_description": [
+		{
+		  "query": "items\/0 statistics likeCount",
+		  "name": "likes"
+		},
+		{
+		  "query": "items\/0 statistics dislikeCount",
+		  "name": "dislikes"
+		},
+		{
+		  "query": "items\/0 statistics viewCount",
+		  "name": "views"
+		},
+		{
+		  "query": "items\/0 statistics commentCount",
+		  "name": "comments"
+		}
+	  ],
+	  "target_value_period_in_minutes": 60,
+	  "url": "https:\/\/www.googleapis.com\/youtube\/v3\/videos?part=statistics&id=Tz50vEX0nwE&key=AIzaSyD1yAAiGOS2fygCzie7d5dvWz9pU4EwPlM",
+	  "target_value_sum": 0
+	}
+  ]
+}

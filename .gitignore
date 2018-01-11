@@ -2,3 +2,4 @@
 .idea
 visio/target
 core/target
+*.iml

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Visio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="js/visio.js"></script>
+</head>
+<body style="width: 100%; height: 100%" ng-app="myApp" ng-controller="myCtrl">
+
+
+<!--
+<select id="stats_select"
+        style="width: 80%; text-align: center;"
+        ng-change="onSelectedStatsChanged()"
+        ng-model="stats.items">
+    <option ng-repeat="s in stats.items">{{s.headline}}</option>
+</select>
+-->
+
+
+<div style="text-align: center; align-content: center;">
+    <select style="width: 80%; align-self: center;"
+            id="stats_select" ng-model="model" ng-change="onSelectedStatsChanged()">
+        <option ng-repeat="s in stats.items">{{s.headline}}</option>
+    </select>
+</div>
+
+<div style="text-align: center; align-content: center;">
+    <div id="chart_div" style="width: 100%; height: 1200px;"></div>
+</div>
+
+</body>
+</html>

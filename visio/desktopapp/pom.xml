@@ -21,7 +21,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>ru.nikich59.webstatistics.visiocore.desktopapp.VisioApplication</mainClass>
+							<mainClass>ru.nikich59.webstatistics.visio.desktopapp.VisioApplication</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
@@ -38,8 +38,12 @@
 			<artifactId>visiocore</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>ru.nikich59.webstatistics.visio</groupId>
+			<artifactId>desktopcore</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>

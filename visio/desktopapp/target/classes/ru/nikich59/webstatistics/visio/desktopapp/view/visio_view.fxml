@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import ru.nikich59.webstatistics.visio.desktopapp.view.ChartControlView?>
+<?import ru.nikich59.webstatistics.visio.desktopapp.view.ChartView?>
+<?import ru.nikich59.webstatistics.visio.desktopapp.view.SeriesListView?>
+<?import ru.nikich59.webstatistics.visio.desktopapp.view.TopMenuView?>
+<fx:root type="javafx.scene.layout.StackPane" xmlns="http://javafx.com/javafx/8.0.112"
+		 xmlns:fx="http://javafx.com/fxml/1">
+	<children>
+		<BorderPane>
+			<left>
+				<StackPane
+						style="-fx-padding: 16px;">
+					<SeriesListView
+							maxWidth="250"
+							fx:id="seriesListView">
+					</SeriesListView>
+				</StackPane>
+			</left>
+			<top>
+				<TopMenuView fx:id="menuView">
+
+				</TopMenuView>
+			</top>
+			<center>
+
+				<ChartView fx:id="chartView">
+
+				</ChartView>
+
+			</center>
+			<right>
+				<ChartControlView fx:id="chartControlView">
+
+				</ChartControlView>
+			</right>
+		</BorderPane>
+	</children>
+</fx:root>

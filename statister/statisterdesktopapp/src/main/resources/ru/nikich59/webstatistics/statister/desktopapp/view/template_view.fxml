@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<fx:root type="javafx.scene.layout.StackPane" xmlns="http://javafx.com/javafx/8.0.112"
+		 xmlns:fx="http://javafx.com/fxml/1">
+	<children>
+		<VBox prefWidth="400" prefHeight="300">
+			<children>
+				<Label fx:id="descriptionLabel">
+
+				</Label>
+				<VBox fx:id="parameterVBox">
+
+				</VBox>
+			</children>
+		</VBox>
+	</children>
+</fx:root>
