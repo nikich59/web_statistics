@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="jquery" type="javaScript">
+    <properties>
+      <option name="frameworkName" value="jQuery" />
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/visio/webapp/src/main/webapp/js/lib/jquery.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/visio/webapp/src/main/webapp/js/lib/jquery.js" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

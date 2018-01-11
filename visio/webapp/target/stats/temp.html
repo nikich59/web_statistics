@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>C3 Chart Example</title>
+
+    <link rel="stylesheet" type="text/css" href="css/c3.css"/>
+    <script type="text/javascript" src="js/lib/d3.v3.min.js"></script>
+    <script type="text/javascript" src="js/lib/c3.js"></script>
+    <script src="js/lib/jquery.js"></script>
+</head>
+
+<body>
+<div id="chart" class="container"></div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $.ajax({
+            url: "test_servlet",
+            type: "post",
+            datatype: "json",
+            success: function (result, status, xhr) {
+                var chart = c3.generate({
+                    data: {
+                        xFormat: '%Y-%m-%d %H:%M:%S',
+                        json: JSON.parse(result),
+                        keys: {
+                            x: 'x',
+                            value: ['y']
+                        }
+                    },
+                    axis: {
+                        x: {
+                            type: 'timeseries',
+                            tick: {
+                                format: '%Y-%m-%d %H:%M:%S'
+                            }
+                        }
+                    },
+                    zoom: {
+                        enabled: true
+                    },
+                    subchart: {
+                        show: true
+                    }
+                });
+            }
+        });
+
+    });
+</script>
+</body>
+
+</html>
