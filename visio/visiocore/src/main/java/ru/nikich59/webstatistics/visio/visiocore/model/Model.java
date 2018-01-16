@@ -1,16 +1,17 @@
 package ru.nikich59.webstatistics.visio.visiocore.model;
 
+import ru.nikich59.webstatistics.core.corebasics.stats.Statistics;
+import ru.nikich59.webstatistics.core.corebasics.stats.controller.StatsController;
+import ru.nikich59.webstatistics.core.corejpa.StatsControllerFactory;
 import ru.nikich59.webstatistics.visio.visiocore.model.series.PlainSeries;
 import ru.nikich59.webstatistics.visio.visiocore.model.series.Series;
-import stats.Statistics;
-import stats.controller.StatsController;
-import stats.controller.StatsControllerFactory;
 
 import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Nikita on 28.12.2017.
@@ -27,9 +28,16 @@ public class Model
 		public Statistics.StatisticsHeader statisticsHeader;
 	}
 
-	private List < String > statisticsDirectories = new ArrayList <>( );
+//	private List < String > statisticsDirectories = new ArrayList <>( );
+
+	private StatsControllerFactory statsControllerFactory;
 
 	private List < StatisticsSeries > statisticsSeries = new ArrayList <>( );
+
+	public Model( Map < String, Object > configMap )
+	{
+		statsControllerFactory = new StatsControllerFactory( configMap );
+	}
 
 	public void loadStatisticsWithController( StatsController statsController )
 			throws IOException
@@ -48,7 +56,7 @@ public class Model
 			return;
 		}
 
-		for ( int columnIndex = 0; columnIndex < dataPoints.get( 0 ).data.length; columnIndex += 1 )
+		for ( int columnIndex = 0; columnIndex < dataPoints.get( 0 ).getData( ).size( ); columnIndex += 1 )
 		{
 			StatisticsSeries series = new StatisticsSeries( );
 			series.id = String.valueOf( statisticsSeries.size( ) );
@@ -60,19 +68,21 @@ public class Model
 
 			for ( int dataPointIndex = 0; dataPointIndex < dataPoints.size( ); dataPointIndex += 1 )
 			{
-				xAxis.add( dataPoints.get( dataPointIndex ).dateTime.toEpochSecond( ) );
+				xAxis.add( dataPoints.get( dataPointIndex ).getDateTime( ).toEpochSecond( ) );
 				try
 				{
-					yAxis.add( Float.parseFloat( dataPoints.get( dataPointIndex ).data[ columnIndex ] ) );
+					yAxis.add( Float.parseFloat( dataPoints.get( dataPointIndex ).getData( ).get( columnIndex ) ) );
 				}
 				catch ( Exception e )
 				{
-					System.out.println( dataPoints.get( dataPointIndex ).dateTime );
+					System.out.println( dataPoints.get( dataPointIndex ).getDateTime( ) );
+
+					// TODO: Implement error handling.
 				}
 			}
 
 			PlainSeries < Number, Number > plainSeries = new PlainSeries <>( );
-			plainSeries.setName( statistics.getHeader( ).getColumnNames( ).get( columnIndex ) );
+			plainSeries.setName( statistics.getHeader( ).getValueDescriptions( ).get( columnIndex ).getName( ) );
 			plainSeries.setxAxis( xAxis );
 			plainSeries.setyAxis( yAxis );
 
@@ -146,14 +156,17 @@ public class Model
 
 		return false;
 	}
-
-	public void addStatisticsDirectory( String statisticsDirectory )
-	{
-		statisticsDirectories.add( statisticsDirectory );
-	}
-
+	/*
+		public void addStatisticsDirectory( String statisticsDirectory )
+		{
+			statisticsDirectories.add( statisticsDirectory );
+		}
+	*/
 	public List < StatsController > getAvailableControllers( )
+			throws IOException
 	{
+		return statsControllerFactory.listStats( );
+		/*
 		List < StatsController > availableControllers = new ArrayList <>( );
 
 
@@ -163,6 +176,6 @@ public class Model
 			availableControllers.addAll( factory.listStatsInDirectory( ) );
 		}
 
-		return availableControllers;
+		return availableControllers;*/
 	}
 }

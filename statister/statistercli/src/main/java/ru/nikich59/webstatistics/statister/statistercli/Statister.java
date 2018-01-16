@@ -1,7 +1,7 @@
 package ru.nikich59.webstatistics.statister.statistercli;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import net.minidev.json.JSONObject;
+import net.minidev.json.parser.JSONParser;
 import ru.nikich59.webstatistics.statister.model.Model;
 
 import java.io.File;

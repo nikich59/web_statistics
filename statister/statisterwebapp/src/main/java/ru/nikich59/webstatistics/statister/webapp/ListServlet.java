@@ -1,7 +1,7 @@
 package ru.nikich59.webstatistics.statister.webapp;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import net.minidev.json.JSONArray;
+import net.minidev.json.JSONObject;
 import ru.nikich59.webstatistics.statister.SiteStatisticsAcquirer;
 import ru.nikich59.webstatistics.statister.Template;
 import ru.nikich59.webstatistics.statister.TemplateLoader;
@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Nikita on 11.01.2018.
@@ -39,7 +40,7 @@ public class ListServlet extends Servlet
 
 				for ( SleuthController sleuthController : getModel( ).getSleuthList( ) )
 				{
-					JSONObject sleuthControllerObject = sleuthController.getSleuth( ).getConfigObject( );
+					Map < String, Object > sleuthControllerObject = sleuthController.getSleuth( ).getConfigMap( );
 
 					if ( sleuthController.getSleuth( ).getLastException( ) != null )
 					{
@@ -66,7 +67,7 @@ public class ListServlet extends Servlet
 					{
 						JSONObject parameterObject = new JSONObject( );
 						parameterObject.put( "description", templateParameter.getDescription( ) );
-						parameterObject.put( "data_type", templateParameter.getDataType( ).getJson( ) );
+						parameterObject.put( "data_type", templateParameter.getDataType( ).getMap( ) );
 
 						templateParameters.add( parameterObject );
 					}
@@ -90,7 +91,7 @@ public class ListServlet extends Servlet
 					{
 						JSONObject parameterObject = new JSONObject( );
 						parameterObject.put( "description", templateParameter.getDescription( ) );
-						parameterObject.put( "data_type", templateParameter.getDataType( ).getJson( ) );
+						parameterObject.put( "data_type", templateParameter.getDataType( ).getMap( ) );
 
 						templateParameters.add( parameterObject );
 					}
@@ -107,8 +108,8 @@ public class ListServlet extends Servlet
 
 				for ( SiteStatisticsAcquirer statisticsAcquirer : getModel( ).getSiteStatisticsAcquirers( ) )
 				{
-					JSONObject statisticsAcquirerObject =
-							statisticsAcquirer.getStatisticsHeader( ).getConfigObject( );
+					Map < String, Object > statisticsAcquirerObject =
+							statisticsAcquirer.getStatisticsHeader( ).getConfigMap( );
 					if ( statisticsAcquirer.getLastException( ) != null )
 					{
 						statisticsAcquirerObject.put( "last_error",

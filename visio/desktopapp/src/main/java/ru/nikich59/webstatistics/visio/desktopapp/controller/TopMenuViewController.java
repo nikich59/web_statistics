@@ -1,9 +1,9 @@
 package ru.nikich59.webstatistics.visio.desktopapp.controller;
 
+import ru.nikich59.webstatistics.core.corebasics.stats.controller.StatsController;
 import ru.nikich59.webstatistics.visio.desktopapp.ViewController;
 import ru.nikich59.webstatistics.visio.desktopapp.view.TopMenuView;
 import ru.nikich59.webstatistics.visio.desktopapp.view.dialog.AddStatisticsDialog;
-import stats.controller.StatsController;
 
 import java.io.IOException;
 import java.util.List;
@@ -23,12 +23,12 @@ public class TopMenuViewController extends ViewController
 
 		this.view = view;
 	}
-
-	public List < StatsController > getAvailableControllers( )
-	{
-		return getModel( ).getAvailableControllers( );
-	}
-
+	/*
+		public List < StatsController > getAvailableControllers( )
+		{
+			return getModel( ).getAvailableControllers( );
+		}
+	*/
 	public void addStatsController( StatsController statsController )
 	{
 		try
@@ -60,11 +60,15 @@ public class TopMenuViewController extends ViewController
 	{
 		try
 		{
-			return new AddStatisticsDialog( getModel( ).getAvailableControllers( ) );
+			List< StatsController > statsControllerList = getModel( ).getAvailableControllers( );
+
+			return new AddStatisticsDialog( statsControllerList );
 		}
 		catch ( IOException e )
 		{
 			handleException( e );
+
+			// TODO: Implement error handling.
 		}
 
 		return null;

@@ -10,7 +10,7 @@
 
 	<packaging>war</packaging>
 
-	<name>stats</name>
+	<name>ru.nikich59.webstatistics.core.corebasics.stats</name>
 
 
 	<properties>
@@ -18,7 +18,7 @@
 	</properties>
 
 	<build>
-		<finalName>stats</finalName>
+		<finalName>ru.nikich59.webstatistics.core.corebasics.stats</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>

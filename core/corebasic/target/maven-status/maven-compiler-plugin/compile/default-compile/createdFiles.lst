@@ -1,0 +1,13 @@
+ru\nikich59\webstatistics\core\corebasics\stats\controller\StatsFileController.class
+ru\nikich59\webstatistics\core\corebasics\stats\Statistics$DataPoint.class
+ru\nikich59\webstatistics\core\corebasics\stats\StatsFileFormatException.class
+ru\nikich59\webstatistics\core\corebasics\stats\Statistics$ValueDataTypeInt.class
+ru\nikich59\webstatistics\core\corebasics\stats\Statistics$ValueDescription.class
+ru\nikich59\webstatistics\core\corebasics\stats\WebDataType.class
+ru\nikich59\webstatistics\core\corebasics\stats\StatsFile.class
+ru\nikich59\webstatistics\core\corebasics\stats\WebDataType$1.class
+ru\nikich59\webstatistics\core\corebasics\stats\Statistics$ValueDataType.class
+ru\nikich59\webstatistics\core\corebasics\stats\Statistics.class
+ru\nikich59\webstatistics\core\corebasics\stats\controller\StatsController.class
+ru\nikich59\webstatistics\core\corebasics\stats\Statistics$StatisticsHeader.class
+ru\nikich59\webstatistics\core\corebasics\stats\Statistics$ValueDataTypeString.class

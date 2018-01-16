@@ -18,8 +18,13 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>ru.nikich59.webstatistics</groupId>
-			<artifactId>core</artifactId>
+			<groupId>ru.nikich59.webstatistics.core</groupId>
+			<artifactId>core-jpa</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>ru.nikich59.webstatistics.core</groupId>
+			<artifactId>core-basic</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>

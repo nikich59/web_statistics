@@ -1,11 +1,12 @@
 package ru.nikich59.webstatistics.statister.webapp;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import net.minidev.json.JSONArray;
+import net.minidev.json.JSONObject;
+import ru.nikich59.webstatistics.core.corebasics.stats.Statistics;
+import ru.nikich59.webstatistics.core.corebasics.stats.controller.StatsController;
 import ru.nikich59.webstatistics.visio.visiocore.model.Model;
-import stats.Statistics;
-import stats.controller.StatsController;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,15 +24,27 @@ import java.util.List;
 )
 public class VisioServlet extends HttpServlet
 {
+	Model model;
+
+
+	@Override
+	public void init( ServletConfig config )
+			throws ServletException
+	{
+		super.init( config );
+
+		model = ( Model ) config.getServletContext( ).getAttribute( "visio_model" );
+	}
+
+
 	@Override
 	protected void doGet( HttpServletRequest request, HttpServletResponse response )
 			throws ServletException, IOException
 	{
-		Model model = new Model( );
-
-		model.addStatisticsDirectory( "../../stats/stats/statisters/" );
-		model.addStatisticsDirectory( "../../stats/stats/finished/" );
-
+/*
+		model.addStatisticsDirectory( "../../ru.nikich59.webstatistics.core.corebasics.stats/ru.nikich59.webstatistics.core.corebasics.stats/statisters/" );
+		model.addStatisticsDirectory( "../../ru.nikich59.webstatistics.core.corebasics.stats/ru.nikich59.webstatistics.core.corebasics.stats/finished/" );
+*/
 		List < StatsController > controllers = model.getAvailableControllers( );
 
 		String id = request.getParameter( "id" );
@@ -60,17 +73,17 @@ public class VisioServlet extends HttpServlet
 
 		int viewsIndex = - 1;
 		JSONArray columnNameAray = new JSONArray( );
-		for ( int i = 0; i < statistics.getHeader( ).getColumnNames( ).size( ); i += 1 )
+		for ( int i = 0; i < statistics.getHeader( ).getValueDescriptions( ).size( ); i += 1 )
 		{
 			JSONArray pointArray = new JSONArray( );
 
-			if ( statistics.getHeader( ).getColumnNames( ).get( i ).equals( "views" ) )
+			if ( statistics.getHeader( ).getValueDescriptions( ).get( i ).getName( ).equals( "views" ) )
 			{
 				viewsIndex = i;
 			}
 			else
 			{
-				columnNameAray.add( statistics.getHeader( ).getColumnNames( ).get( i ) );
+				columnNameAray.add( statistics.getHeader( ).getValueDescriptions( ).get( i ).getName( ) );
 			}
 		}
 
@@ -80,13 +93,13 @@ public class VisioServlet extends HttpServlet
 		{
 			JSONArray pointArray = new JSONArray( );
 
-			pointArray.add( dataPoint.dateTime.toEpochSecond( ) );
+			pointArray.add( dataPoint.getDateTime( ).toEpochSecond( ) );
 
-			for ( int i = 0; i < dataPoint.data.length; i += 1 )
+			for ( int i = 0; i < dataPoint.getData( ).size( ); i += 1 )
 			{
 				if ( i != viewsIndex )
 				{
-					pointArray.add( Long.parseLong( dataPoint.data[ i ] ) );
+					pointArray.add( Long.parseLong( dataPoint.getData( ).get( i ) ) );
 				}
 			}
 

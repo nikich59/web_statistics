@@ -1,10 +1,11 @@
 package ru.nikich59.webstatistics.statister.webapp;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import net.minidev.json.JSONArray;
+import net.minidev.json.JSONObject;
+import ru.nikich59.webstatistics.core.corebasics.stats.controller.StatsController;
 import ru.nikich59.webstatistics.visio.visiocore.model.Model;
-import stats.controller.StatsController;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,15 +23,27 @@ import java.util.List;
 )
 public class VisioListServlet extends HttpServlet
 {
+	private Model model;
+
+
+	@Override
+	public void init( ServletConfig config )
+			throws ServletException
+	{
+		super.init( config );
+
+		model = ( Model ) config.getServletContext( ).getAttribute( "visio_model" );
+	}
+
+
 	@Override
 	protected void doGet( HttpServletRequest request, HttpServletResponse response )
 			throws ServletException, IOException
 	{
-		Model model = new Model( );
-
-		model.addStatisticsDirectory( "../../stats/stats/statisters/" );
-		model.addStatisticsDirectory( "../../stats/stats/finished/" );
-
+/*
+		model.addStatisticsDirectory( "../../ru.nikich59.webstatistics.core.corebasics.stats/ru.nikich59.webstatistics.core.corebasics.stats/statisters/" );
+		model.addStatisticsDirectory( "../../ru.nikich59.webstatistics.core.corebasics.stats/ru.nikich59.webstatistics.core.corebasics.stats/finished/" );
+*/
 		List < StatsController > controllers = model.getAvailableControllers( );
 
 		JSONObject responseJson = new JSONObject( );

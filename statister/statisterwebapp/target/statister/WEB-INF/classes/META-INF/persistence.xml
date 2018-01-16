@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+			 xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="JavaHelps" transaction-type="RESOURCE_LOCAL">
+		<!-- Persistence provider -->
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<!-- Entity classes -->
+		<class>jpa.User</class>
+		<properties>
+			<!-- The JDBC driver of your database -->
+
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+
+			<!-- The JDBC URL to the database instance -->
+<!--
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/testdb"/>
+-->
+			<!--
+			<property name="javax.persistence.jdbc.url" value="jdbc/postgres"/>
+			-->
+
+			<!-- The database username -->
+<!--
+			<property name="javax.persistence.jdbc.user" value="postgres"/>
+-->
+			<!-- The database password -->
+<!--
+			<property name="javax.persistence.jdbc.password" value="142434"/>
+-->
+			<!--
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+			-->
+
+			<!--
+			<property name="hibernate.connection.datasource" value="java:comp/env/jdbc/postgres"/>
+			-->
+
+		</properties>
+	</persistence-unit>
+</persistence>

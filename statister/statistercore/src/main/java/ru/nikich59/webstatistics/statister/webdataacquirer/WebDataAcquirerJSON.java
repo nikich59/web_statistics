@@ -1,8 +1,8 @@
 package ru.nikich59.webstatistics.statister.webdataacquirer;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+
+import net.minidev.json.JSONObject;
+import net.minidev.json.parser.JSONParser;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -44,9 +44,9 @@ public class WebDataAcquirerJSON implements WebDataAcquirer
 	@Override
 	public String getValue( String query )
 	{
-		DataSelectorJSON dataSelectorJSON = new DataSelectorJSON( document );
+		DataSelectorMap dataSelectorMap = new DataSelectorMap( document );
 
-		return dataSelectorJSON.getValue( query );
+		return dataSelectorMap.getValue( query );
 	}
 /*
 	private Object getElement( String cssQuery )

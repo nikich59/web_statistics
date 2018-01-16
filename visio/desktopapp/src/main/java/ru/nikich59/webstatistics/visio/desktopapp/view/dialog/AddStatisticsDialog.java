@@ -4,8 +4,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
+import ru.nikich59.webstatistics.core.corebasics.stats.controller.StatsController;
 import ru.nikich59.webstatistics.visio.desktopapp.view.StatisticsInfoView;
-import stats.controller.StatsController;
 
 import java.io.IOException;
 import java.util.List;
@@ -27,6 +27,11 @@ public class AddStatisticsDialog extends Dialog < StatsController >
 		for ( StatsController statsController : availableStatistics )
 		{
 			StatisticsInfoView statisticsView;
+
+			if ( statsController == null || statsController.getStatistics( ) == null )
+			{
+				System.out.println( " NULL" );
+			}
 
 			statisticsView = new StatisticsInfoView( statsController.getStatistics( ).getHeader( ) );
 

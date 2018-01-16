@@ -94,6 +94,10 @@ public class WebDataAcquirerXML implements WebDataAcquirer
 			currentElement = currentElement.selectFirst( currentQuery );
 		}
 
+		if ( currentElement == null )
+		{
+			return "";
+		}
 		return currentElement.html( );
 	}
 

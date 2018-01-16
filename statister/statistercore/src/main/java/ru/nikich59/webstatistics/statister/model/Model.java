@@ -1,17 +1,16 @@
 package ru.nikich59.webstatistics.statister.model;
 
-import org.json.simple.JSONObject;
+import ru.nikich59.webstatistics.core.corebasics.stats.controller.StatsController;
+import ru.nikich59.webstatistics.core.corejpa.StatsControllerFactory;
 import ru.nikich59.webstatistics.statister.SiteStatisticsAcquirer;
-import ru.nikich59.webstatistics.statister.sleuth.Sleuth;
 import ru.nikich59.webstatistics.statister.sleuth.SleuthController;
 import ru.nikich59.webstatistics.statister.sleuth.SleuthFactory;
-import stats.controller.StatsController;
-import stats.controller.StatsControllerFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Nikita on 27.12.2017.
@@ -24,11 +23,11 @@ public class Model
 	private StatsControllerFactory statsControllerFactory;
 	private SleuthFactory sleuthFactory;
 
-	public Model( JSONObject configObject )
+	public Model( Map < String, Object > configMap )
 	{
-		statsControllerFactory = new StatsControllerFactory( configObject );
+		statsControllerFactory = new StatsControllerFactory( configMap );
 
-		sleuthFactory = new SleuthFactory( configObject );
+		sleuthFactory = new SleuthFactory( configMap );
 	}
 
 	public List < SiteStatisticsAcquirer > getSiteStatisticsAcquirers( )
@@ -162,23 +161,32 @@ public class Model
 
 	public void updateStatistersList( )
 	{
-		List < StatsController > statsControllers = statsControllerFactory.listStatsInDirectory( );
-		for ( StatsController statsController : statsControllers )
+		try
 		{
-			try
+			List < StatsController > statsControllers = statsControllerFactory.listStats( );
+			for ( StatsController statsController : statsControllers )
 			{
-				statsController.loadStatisticsCaption( );
-			}
-			catch ( Exception e )
-			{
-				// TODO: Implement error handling.
-				e.printStackTrace( );
-			}
+				try
+				{
+					statsController.loadStatisticsCaption( );
+				}
+				catch ( Exception e )
+				{
+					// TODO: Implement error handling.
+					e.printStackTrace( );
+				}
 
-			if ( ! hasStatister( statsController.getId( ) ) )
-			{
-				addStatisticsAcquirer( new SiteStatisticsAcquirer( statsController ) );
+				if ( ! hasStatister( statsController.getId( ) ) )
+				{
+					addStatisticsAcquirer( new SiteStatisticsAcquirer( statsController ) );
+				}
 			}
+		}
+		catch ( IOException e )
+		{
+			e.printStackTrace( );
+
+			// TODO: Implement error handling.
 		}
 	}
 
@@ -199,8 +207,8 @@ public class Model
 
 			if ( ! hasSleuth( sleuthController.getId( ) ) )
 			{
-				Sleuth sleuth = sleuthController.getSleuth( );
-				sleuth.setSleuthController( sleuthController );
+//				Sleuth sleuth = sleuthController.getSleuth( );
+//				sleuth.setSleuthController( sleuthController );
 				addSleuth( sleuthController );
 			}
 		}

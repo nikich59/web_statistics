@@ -1,0 +1,19 @@
+2018-01-13T23:34:26.801+03:00[Europe/Moscow]
+https://www.googleapis.com/youtube/v3/videos?part=statistics&id=CoDx5dKAPSM&key=AIzaSyD1yAAiGOS2fygCzie7d5dvWz9pU4EwPlM
+Быть Или : ГосЗакупки на Новый Год! ШАМПАНСКОЕ за 1.5 млн и ИКРА за 1.4 | Быть Или
+timestamp "likes" "dislikes" "views" "comments"
+timestamp "items/0 statistics likeCount" "items/0 statistics dislikeCount" "items/0 statistics viewCount" "items/0 statistics commentCount"
+
+90000
+json
+1000000000000
+60
+20160
+timestamp "int" "int" "int" "int"
+false
+
+
+
+2018-01-13T23:34:26.924+03:00[Europe/Moscow] 79139 53779 443880 21925
+2018-01-13T23:43:31.638+03:00[Europe/Moscow] 79152 53780 443891 21925
+2018-01-14T01:47:50.627+03:00[Europe/Moscow] 79276 53781 445578 21944
