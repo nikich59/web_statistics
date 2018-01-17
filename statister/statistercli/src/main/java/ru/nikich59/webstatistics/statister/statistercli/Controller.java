@@ -1,11 +1,11 @@
 package ru.nikich59.webstatistics.statister.statistercli;
 
-import org.json.simple.JSONObject;
 import ru.nikich59.webstatistics.statister.SiteStatisticsAcquirer;
 import ru.nikich59.webstatistics.statister.model.Model;
 import ru.nikich59.webstatistics.statister.sleuth.SleuthController;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -22,28 +22,29 @@ public class Controller
 	}
 	private Model model;
 
-	private int reportTimerPeriodInMillis = 60000;
+	private long reportTimerPeriodInMillis = 60000;
 
 	private Timer sleuthTimer;
 	private Timer statistersTimer;
 
-	private int sleuthTimerPeriodInMillis = 10000;
-	private int statisterTimerPeriodInMillis = 10000;
+	private long sleuthTimerPeriodInMillis = 10000;
+	private long statisterTimerPeriodInMillis = 10000;
 
 
-	public Controller( JSONObject configObject )
+	public Controller( Map < String, Object > configMap )
 	{
-		if ( configObject.get( "report_period_in_millis" ) != null )
+		if ( configMap.get( "report_period_in_millis" ) != null )
 		{
-			reportTimerPeriodInMillis = ( int ) ( long ) configObject.get( "report_period_in_millis" );
+			reportTimerPeriodInMillis = Long.parseLong( configMap.get( "report_period_in_millis" ).toString( ) );
 		}
-		if ( configObject.get( "sleuth_timer_period_in_millis" ) != null )
+		if ( configMap.get( "sleuth_timer_period_in_millis" ) != null )
 		{
-			sleuthTimerPeriodInMillis = ( int ) ( long ) configObject.get( "sleuth_timer_period_in_millis" );
+			sleuthTimerPeriodInMillis = Long.parseLong( configMap.get( "sleuth_timer_period_in_millis" ).toString( ) );
 		}
-		if ( configObject.get( "statister_timer_period_in_millis" ) != null )
+		if ( configMap.get( "statister_timer_period_in_millis" ) != null )
 		{
-			statisterTimerPeriodInMillis = ( int ) ( long ) configObject.get( "statister_timer_period_in_millis" );
+			statisterTimerPeriodInMillis =
+					Long.parseLong( configMap.get( "statister_timer_period_in_millis" ).toString( ) );
 		}
 
 		initializeReportTimer( );

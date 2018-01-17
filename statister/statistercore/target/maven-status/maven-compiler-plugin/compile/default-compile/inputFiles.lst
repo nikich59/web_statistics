@@ -6,11 +6,11 @@ C:\main\projects\webstatistics\web_statistics\statister\statistercore\src\main\j
 C:\main\projects\webstatistics\web_statistics\statister\statistercore\src\main\java\ru\nikich59\webstatistics\statister\dataprocessor\DataProcessor.java
 C:\main\projects\webstatistics\web_statistics\statister\statistercore\src\main\java\ru\nikich59\webstatistics\statister\sleuth\SleuthFactory.java
 C:\main\projects\webstatistics\web_statistics\statister\statistercore\src\main\java\ru\nikich59\webstatistics\statister\SleuthTemplateLoader.java
+C:\main\projects\webstatistics\web_statistics\statister\statistercore\src\main\java\ru\nikich59\webstatistics\statister\webdataacquirer\DataSelectorMap.java
 C:\main\projects\webstatistics\web_statistics\statister\statistercore\src\main\java\ru\nikich59\webstatistics\statister\webdataacquirer\WebDataAcquirerFactory.java
 C:\main\projects\webstatistics\web_statistics\statister\statistercore\src\main\java\ru\nikich59\webstatistics\statister\sleuth\Sleuth.java
 C:\main\projects\webstatistics\web_statistics\statister\statistercore\src\main\java\ru\nikich59\webstatistics\statister\Template.java
 C:\main\projects\webstatistics\web_statistics\statister\statistercore\src\main\java\ru\nikich59\webstatistics\statister\TemplateLoaderJSON.java
-C:\main\projects\webstatistics\web_statistics\statister\statistercore\src\main\java\ru\nikich59\webstatistics\statister\webdataacquirer\DataSelectorJSON.java
 C:\main\projects\webstatistics\web_statistics\statister\statistercore\src\main\java\ru\nikich59\webstatistics\statister\SiteStatisticsAcquirer.java
 C:\main\projects\webstatistics\web_statistics\statister\statistercore\src\main\java\ru\nikich59\webstatistics\statister\dataprocessor\DataProcessorFactory.java
 C:\main\projects\webstatistics\web_statistics\statister\statistercore\src\main\java\ru\nikich59\webstatistics\statister\webdataacquirer\WebDataAcquirer.java

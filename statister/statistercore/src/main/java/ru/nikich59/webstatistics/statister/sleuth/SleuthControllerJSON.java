@@ -1,9 +1,9 @@
 package ru.nikich59.webstatistics.statister.sleuth;
 
+import net.minidev.json.JSONObject;
+import net.minidev.json.parser.JSONParser;
+import net.minidev.json.parser.ParseException;
 import org.apache.commons.io.FilenameUtils;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import java.io.File;
 import java.io.FileReader;
@@ -11,6 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Nikita on 09.01.2018.
@@ -38,7 +39,7 @@ public class SleuthControllerJSON extends SleuthController
 
 		try ( FileWriter fileWriter = new FileWriter( file ) )
 		{
-			fileWriter.write( sleuth.getConfigObject( ).toJSONString( ) );
+			fileWriter.write( new JSONObject( sleuth.getConfigMap( ) ).toJSONString( ) );
 		}
 		catch ( IOException e )
 		{
@@ -46,10 +47,10 @@ public class SleuthControllerJSON extends SleuthController
 		}
 	}
 
-	public SleuthController getFromConfig( JSONObject configObject )
+	public SleuthController getFromConfig( Map < String, Object > configMap )
 	{
 		SleuthControllerJSON sleuthJSONController = new SleuthControllerJSON( );
-		sleuthJSONController.sleuth = new Sleuth( configObject );
+		sleuthJSONController.sleuth = new Sleuth( configMap );
 
 		return sleuthJSONController;
 	}
@@ -137,6 +138,7 @@ public class SleuthControllerJSON extends SleuthController
 				}
 				catch ( Exception e )
 				{
+					e.printStackTrace( );
 					// TODO: Implement error handling.
 					// Ignoring exception.
 				}

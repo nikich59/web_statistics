@@ -1,10 +1,11 @@
 package ru.nikich59.webstatistics.statister;
 
-import org.json.simple.JSONObject;
-import ru.nikich59.webstatistics.statister.webdataacquirer.DataSelectorJSON;
+import ru.nikich59.webstatistics.statister.webdataacquirer.DataSelectorMap;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,9 +18,9 @@ public class TemplateParameter
 	{
 		public abstract Object getFormattedValue( String value );
 
-		protected abstract DataType fromJson( JSONObject configObject );
+		protected abstract DataType fromMap( Map < String, Object > configMap );
 
-		public static DataType createFromJson( JSONObject jsonObject )
+		public static DataType createFromMap( Map < String, Object > configMap )
 		{
 			List < DataType > dataTypes = new ArrayList <>( );
 
@@ -28,7 +29,7 @@ public class TemplateParameter
 
 			for ( DataType dataType : dataTypes )
 			{
-				DataType createdDataType = dataType.fromJson( jsonObject );
+				DataType createdDataType = dataType.fromMap( configMap );
 				if ( createdDataType != null )
 				{
 					return createdDataType;
@@ -38,7 +39,7 @@ public class TemplateParameter
 			return null;
 		}
 
-		public abstract JSONObject getJson( );
+		public abstract Map < String, Object > getMap( );
 	}
 
 	public static class DataTypeInt extends DataType
@@ -70,9 +71,9 @@ public class TemplateParameter
 		}
 
 		@Override
-		protected DataType fromJson( JSONObject configObject )
+		protected DataType fromMap( Map < String, Object > configMap )
 		{
-			String type = ( String ) configObject.get( "data_type" );
+			String type = ( String ) configMap.get( "data_type" );
 			if ( type == null )
 			{
 				return null;
@@ -84,11 +85,11 @@ public class TemplateParameter
 			}
 
 			DataTypeInt dataTypeInt = new DataTypeInt( );
-			dataTypeInt.minValue = ( long ) configObject.get( "min_value" );
-			dataTypeInt.maxValue = ( long ) configObject.get( "max_value" );
-			if ( configObject.get( "pref_value" ) != null )
+			dataTypeInt.minValue = Long.parseLong( configMap.get( "min_value" ).toString( ) );
+			dataTypeInt.maxValue = Long.parseLong( configMap.get( "max_value" ).toString( ) );
+			if ( configMap.get( "pref_value" ) != null )
 			{
-				dataTypeInt.prefValue = ( long ) configObject.get( "pref_value" );
+				dataTypeInt.prefValue = Long.parseLong( configMap.get( "pref_value" ).toString( ) );
 			}
 			else
 			{
@@ -99,16 +100,16 @@ public class TemplateParameter
 		}
 
 		@Override
-		public JSONObject getJson( )
+		public Map < String, Object > getMap( )
 		{
-			JSONObject jsonObject = new JSONObject( );
+			Map < String, Object > configMap = new HashMap <>( );
 
-			jsonObject.put( "data_type", "int" );
-			jsonObject.put( "min_value", minValue );
-			jsonObject.put( "max_value", maxValue );
-			jsonObject.put( "pref_value", prefValue );
+			configMap.put( "data_type", "int" );
+			configMap.put( "min_value", String.valueOf( minValue ) );
+			configMap.put( "max_value", String.valueOf( maxValue ) );
+			configMap.put( "pref_value", String.valueOf( prefValue ) );
 
-			return jsonObject;
+			return configMap;
 		}
 	}
 
@@ -126,29 +127,29 @@ public class TemplateParameter
 		}
 
 		@Override
-		protected DataType fromJson( JSONObject configObject )
+		protected DataType fromMap( Map < String, Object > configMap )
 		{
-			String type = ( String ) configObject.get( "data_type" );
+			String type = ( String ) configMap.get( "data_type" );
 			if ( type != null && ! type.equals( "string" ) )
 			{
 				return null;
 			}
 
 			DataTypeString dataTypeString = new DataTypeString( );
-			dataTypeString.prefix = ( String ) configObject.get( "prefix" );
-			dataTypeString.postfix = ( String ) configObject.get( "postfix" );
+			dataTypeString.prefix = ( String ) configMap.get( "prefix" );
+			dataTypeString.postfix = ( String ) configMap.get( "postfix" );
 
 			return dataTypeString;
 		}
 
 		@Override
-		public JSONObject getJson( )
+		public Map < String, Object > getMap( )
 		{
-			JSONObject jsonObject = new JSONObject( );
+			Map < String, Object > configMap = new HashMap <>( );
 
-			jsonObject.put( "data_type", "string" );
+			configMap.put( "data_type", "string" );
 
-			return jsonObject;
+			return configMap;
 		}
 	}
 
@@ -172,18 +173,18 @@ public class TemplateParameter
 	}
 	private String value = "";
 
-	public TemplateParameter( JSONObject configObject )
+	public TemplateParameter( Map < String, Object > configMap )
 	{
-		targetQuery = ( String ) configObject.get( "target_query" );
-		description = ( String ) configObject.get( "description" );
-		selector = ( String ) configObject.get( "selector" );
+		targetQuery = ( String ) configMap.get( "target_query" );
+		description = ( String ) configMap.get( "description" );
+		selector = ( String ) configMap.get( "selector" );
 
-		dataType = DataType.createFromJson( configObject );
+		dataType = DataType.createFromMap( configMap );
 	}
 
-	public void process( JSONObject targetTemplate )
+	public void process( Map < String, Object > configMap )
 	{
-		DataSelectorJSON dataSelectorJSON = new DataSelectorJSON( targetTemplate );
+		DataSelectorMap dataSelectorJSON = new DataSelectorMap( configMap );
 
 		if ( selector == null || selector.isEmpty( ) )
 		{

@@ -6,15 +6,15 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Dialog;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import ru.nikich59.webstatistics.core.corejpa.StatsControllerFactory;
 import ru.nikich59.webstatistics.statister.SiteStatisticsAcquirer;
 import ru.nikich59.webstatistics.statister.Template;
 import ru.nikich59.webstatistics.statister.TemplateLoader;
 import ru.nikich59.webstatistics.statister.desktopapp.TemplateViewController;
 import ru.nikich59.webstatistics.statister.desktopapp.controller.StatisterViewController;
 import ru.nikich59.webstatistics.statister.desktopapp.view.TemplateView;
-import stats.Statistics;
-import stats.controller.StatsController;
-import stats.controller.StatsControllerFactory;
+import ru.nikich59.webstatistics.core.corebasics.stats.Statistics;
+import ru.nikich59.webstatistics.core.corebasics.stats.controller.StatsController;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -1,17 +1,11 @@
 package ru.nikich59.webstatistics.statister.sleuth;
 
-import javafx.util.Pair;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import ru.nikich59.webstatistics.core.corebasics.stats.Statistics;
+import ru.nikich59.webstatistics.core.corebasics.stats.WebDataType;
 import ru.nikich59.webstatistics.statister.webdataacquirer.WebDataAcquirer;
 import ru.nikich59.webstatistics.statister.webdataacquirer.WebDataAcquirerFactory;
-import stats.DataType;
-import stats.Statistics;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 import java.util.function.Consumer;
 
 /**
@@ -25,20 +19,20 @@ public class Sleuth
 		public String newIdQuery;
 		public String targetUrlPrefix;
 		public String targetUrlPostfix;
-		public DataType dataType;
+		public WebDataType dataType;
 		public String description;
 
-		public UrlDescriptor( JSONObject configJson )
+		public UrlDescriptor( Map < String, Object > configMap )
 		{
-			url = ( String ) configJson.get( "url" );
-			newIdQuery = ( String ) configJson.get( "new_id_query" );
-			targetUrlPrefix = ( String ) configJson.get( "target_url_prefix" );
-			targetUrlPostfix = ( String ) configJson.get( "target_url_postfix" );
-			dataType = DataType.fromString( ( String ) configJson.get( "data_type" ) );
+			url = ( String ) configMap.get( "url" );
+			newIdQuery = ( String ) configMap.get( "new_id_query" );
+			targetUrlPrefix = ( String ) configMap.get( "target_url_prefix" );
+			targetUrlPostfix = ( String ) configMap.get( "target_url_postfix" );
+			dataType = WebDataType.fromString( ( String ) configMap.get( "data_type" ) );
 
-			if ( configJson.get( "description" ) != null )
+			if ( configMap.get( "description" ) != null )
 			{
-				description = ( String ) configJson.get( "description" );
+				description = ( String ) configMap.get( "description" );
 			}
 			else
 			{
@@ -46,86 +40,29 @@ public class Sleuth
 			}
 		}
 
-		public JSONObject getConfigObject( )
+		public Map < String, Object > getConfigMap( )
 		{
-			JSONObject configObject = new JSONObject( );
-			configObject.put( "url", url );
-			configObject.put( "new_id_query", newIdQuery );
-			configObject.put( "target_url_prefix", targetUrlPrefix );
-			configObject.put( "target_url_postfix", targetUrlPostfix );
-			configObject.put( "data_type", dataType.toString( ) );
-			configObject.put( "description", description );
+			Map < String, Object > configMap = new HashMap <>( );
+			configMap.put( "url", url );
+			configMap.put( "new_id_query", newIdQuery );
+			configMap.put( "target_url_prefix", targetUrlPrefix );
+			configMap.put( "target_url_postfix", targetUrlPostfix );
+			configMap.put( "data_type", dataType.toString( ) );
+			configMap.put( "description", description );
 
-			return configObject;
+			return configMap;
 		}
 	}
 
-	private class TitleAcquirer
-	{
-		private WebDataAcquirer acquirer;
-		private List < Pair < String, String > > titleParts = new ArrayList <>( );
-
-		public TitleAcquirer( WebDataAcquirer acquirer )
-		{
-			this.acquirer = acquirer;
-		}
-
-		public void setTitleParts( List < Pair < String, String > > titleParts )
-		{
-			this.titleParts = titleParts;
-		}
-
-		public String getTitle( )
-				throws Exception
-		{
-			String title = "";
-
-			for ( Pair < String, String > titlePart : titleParts )
-			{
-				try
-				{
-					title += acquirer.getValue( titlePart.getKey( ) ) + titlePart.getValue( );
-				}
-				catch ( Exception e )
-				{
-					// Ignoring.
-				}
-			}
-
-			return title;
-		}
-
-		public JSONObject getConfigObject( )
-		{
-			JSONObject configObject = new JSONObject( );
-
-			configObject.put( "source", titleAcquiringSource.toString( ) );
-
-			JSONArray parts = new JSONArray( );
-			for ( Pair < String, String > titlePart : titleParts )
-			{
-				JSONObject partObject = new JSONObject( );
-
-				partObject.put( "query", titlePart.getKey( ) );
-				partObject.put( "postfix", titlePart.getValue( ) );
-
-				parts.add( partObject );
-			}
-
-			configObject.put( "parts", parts );
-
-			return configObject;
-		}
-	}
-
-	private enum TitleAcquiringSource
+	enum HeadlinePartMode
 	{
 		SLEUTH,
-		STATISTER;
+		STATISTER,
+		RAW;
 
-		public static TitleAcquiringSource fromString( String s )
+		public static HeadlinePartMode fromString( String s )
 		{
-			for ( TitleAcquiringSource source : values( ) )
+			for ( HeadlinePartMode source : values( ) )
 			{
 				if ( source.toString( ).equals( s ) )
 				{
@@ -134,6 +71,23 @@ public class Sleuth
 			}
 
 			throw new UnsupportedOperationException( );
+		}
+
+		public String getHeadline( WebDataAcquirer sleuthDataAcquirer,
+								   WebDataAcquirer statisterDataAcquirer,
+								   String query )
+		{
+			switch ( this )
+			{
+				case SLEUTH:
+					return sleuthDataAcquirer.getValue( query );
+				case STATISTER:
+					return statisterDataAcquirer.getValue( query );
+				case RAW:
+					return "";
+				default:
+					throw new UnsupportedOperationException( );
+			}
 		}
 
 		@Override
@@ -145,9 +99,140 @@ public class Sleuth
 					return "sleuth";
 				case STATISTER:
 					return "statister";
+				case RAW:
+					return "raw";
 				default:
 					throw new UnsupportedOperationException( );
 			}
+		}
+	}
+
+	private class HeadlinePart
+	{
+		public HeadlinePart( Map < String, Object > configMap )
+		{
+			setMode( HeadlinePartMode.fromString( ( String )
+					configMap.getOrDefault( "mode", HeadlinePartMode.RAW.toString( ) ) ) );
+			setPrefix( ( String ) configMap.getOrDefault( "prefix", "" ) );
+			setPostfix( ( String ) configMap.getOrDefault( "postfix", "" ) );
+			setQuery( String.valueOf( configMap.getOrDefault( "query", "" ) ) );
+		}
+
+		private HeadlinePartMode mode;
+		public HeadlinePartMode getMode( )
+		{
+			return mode;
+		}
+		public void setMode( HeadlinePartMode mode )
+		{
+			this.mode = mode;
+		}
+		public String getPrefix( )
+		{
+			return prefix;
+		}
+		public void setPrefix( String prefix )
+		{
+			this.prefix = prefix;
+		}
+		public String getPostfix( )
+		{
+			return postfix;
+		}
+		public void setPostfix( String postfix )
+		{
+			this.postfix = postfix;
+		}
+		private String prefix = "";
+		private String postfix = "";
+		public String getQuery( )
+		{
+			return query;
+		}
+		public void setQuery( String query )
+		{
+			this.query = query;
+		}
+		private String query = "";
+
+		public String getHeadlinePart( WebDataAcquirer sleuthDataAcquirer, WebDataAcquirer statisterDataAcquirer )
+		{
+			return prefix + mode.getHeadline( sleuthDataAcquirer, statisterDataAcquirer, getQuery( ) ) + postfix;
+		}
+	}
+
+	private class HeadlineAcquirer
+	{
+
+		//		private WebDataAcquirer sleuthAcquirer;
+//		private WebDataAcquirer statisterDataAcquirer;
+		private List < HeadlinePart > headlineParts = new ArrayList <>( );
+
+		public HeadlineAcquirer(
+				//WebDataAcquirer sleuthAcquirer,
+//								 WebDataAcquirer statisterDataAcquirer,
+				Map < String, Object > configMap )
+		{
+//			this.sleuthAcquirer = sleuthAcquirer;
+//			this.statisterDataAcquirer = statisterDataAcquirer;
+			List < Object > headlinePartList = ( List < Object > ) configMap.get( "parts" );
+			headlineParts = new ArrayList <>( );
+			for ( Object headlinePart : headlinePartList )
+			{
+				headlineParts.add( new HeadlinePart( ( Map < String, Object > ) headlinePart ) );
+			}
+
+		}
+		/*
+				public void setTitleParts( List < Pair < String, String > > titleParts )
+				{
+					this.titleParts = titleParts;
+				}
+		*/
+		public String getHeadline( WebDataAcquirer statisterDataAcquirer )
+				throws Exception
+		{
+			StringBuilder headlineBuider = new StringBuilder( );
+
+			for ( HeadlinePart headlinePart : headlineParts )
+			{
+				try
+				{
+					headlineBuider.append( headlinePart.getHeadlinePart( dataAcquirer, statisterDataAcquirer ) );
+				}
+				catch ( Exception e )
+				{
+					// Ignoring.
+				}
+			}
+
+			return headlineBuider.toString( );
+		}
+
+		public Map < String, Object > getConfigObject( )
+		{
+			Map < String, Object > configMap = new HashMap <>( );
+
+//			configMap.put( "source", titleAcquiringSource.toString( ) );
+
+			List < Object > parts = new ArrayList <>( );
+//			JSONArray parts = new JSONArray( );
+			for ( HeadlinePart headlinePart : headlineParts )
+			{
+//				JSONObject partObject = new JSONObject( );
+				Map < String, Object > headlinePartMap = new HashMap <>( );
+
+				headlinePartMap.put( "query", headlinePart.getQuery( ) );
+				headlinePartMap.put( "prefix", headlinePart.getPrefix( ) );
+				headlinePartMap.put( "postfix", headlinePart.getPostfix( ) );
+				headlinePartMap.put( "mode", headlinePart.getMode( ).toString( ) );
+
+				parts.add( headlinePartMap );
+			}
+
+			configMap.put( "parts", parts );
+
+			return configMap;
 		}
 	}
 
@@ -166,43 +251,53 @@ public class Sleuth
 
 	private String lastUrl = "";
 
-	private TitleAcquiringSource titleAcquiringSource;
+	private HeadlineAcquirer headlineAcquirer;
 
-	private List < Pair < String, String > > titleParts = new ArrayList <>( );
+	private WebDataAcquirer dataAcquirer;
 
-	private int periodInMillis = 30000;
-	public int getPeriodInMillis( )
+//	private HeadlineAcquirer titleAcquiringSource;
+
+//	private List < Pair < String, String > > titleParts = new ArrayList <>( );
+
+	private long periodInMillis = 30000;
+	public long getPeriodInMillis( )
 	{
 		return periodInMillis;
 	}
 
 	private Exception lastException;
-
-	private SleuthController sleuthController;
-	public void setSleuthController( SleuthController sleuthController )
+	/*
+		private SleuthController sleuthController;
+		public void setSleuthController( SleuthController sleuthController )
+		{
+			this.sleuthController = sleuthController;
+		}
+		public Sleuth( SleuthController sleuthController )
+		{
+			this.sleuthController = sleuthController;
+		}
+	*/
+	public Sleuth(
+			//WebDataAcquirer sleuthDataAcquirer,
+//				   WebDataAcquirer statisterDataAcquirer,
+			Map < String, Object > configMap )
 	{
-		this.sleuthController = sleuthController;
-	}
-	public Sleuth( SleuthController sleuthController )
-	{
-		this.sleuthController = sleuthController;
-	}
-
-	public Sleuth( JSONObject configObject )
-	{
-		urlDescriptor = new UrlDescriptor( ( JSONObject ) configObject.get( "description" ) );
+		urlDescriptor = new UrlDescriptor( ( Map < String, Object > ) configMap.get( "description" ) );
 
 		targetDescriptor =
-				new Statistics.StatisticsHeader( ( JSONObject ) configObject.get( "target_description" ) );
+				new Statistics.StatisticsHeader( ( Map < String, Object > ) configMap.get( "target_description" ) );
 
-		JSONObject titleDescription = ( JSONObject ) configObject.get( "title_description" );
+		Map < String, Object > titleDescription = ( Map < String, Object > ) configMap.get( "headline_description" );
 
-		titleAcquiringSource = TitleAcquiringSource.fromString( ( String ) titleDescription.get( "source" ) );
-		JSONArray titleParts = ( JSONArray ) titleDescription.get( "parts" );
+		headlineAcquirer = new HeadlineAcquirer( titleDescription );
 
-		periodInMillis = ( int ) ( long ) configObject.get( "period_in_millis" );
+		dataAcquirer = WebDataAcquirerFactory.getDataAcquirer( urlDescriptor.dataType, urlDescriptor.url );
 
-		this.titleParts = new ArrayList <>( );
+//		List< Object >  titleParts = ( List< Object > ) titleDescription.get( "parts" );
+
+		periodInMillis = Long.parseLong( String.valueOf( configMap.get( "period_in_millis" ) ) );
+
+/*		this.titleParts = new ArrayList <>( );
 		for ( Object titlePart : titleParts )
 		{
 			JSONObject titlePartJson = ( JSONObject ) titlePart;
@@ -210,20 +305,23 @@ public class Sleuth
 			this.titleParts.add( new Pair <>( ( String ) titlePartJson.get( "query" ),
 					( String ) titlePartJson.get( "postfix" ) ) );
 		}
+		*/
 	}
 
-	public JSONObject getConfigObject( )
+	public Map < String, Object > getConfigMap( )
 	{
-		JSONObject configObject = new JSONObject( );
+		Map < String, Object > configObject = new HashMap <>( );
 
-		configObject.put( "description", urlDescriptor.getConfigObject( ) );
+		configObject.put( "description", urlDescriptor.getConfigMap( ) );
 		configObject.put( "period_in_millis", periodInMillis );
-		TitleAcquirer titleAcquirer = new TitleAcquirer( null );
+		configObject.put( "headline_description", headlineAcquirer.getConfigObject( ) );
+/*
+		HeadlineAcquirer headlineAcquirer = new HeadlineAcquirer( null );
 		titleAcquirer.setTitleParts( titleParts );
 
 		configObject.put( "title_description", titleAcquirer.getConfigObject( ) );
-
-		configObject.put( "target_description", targetDescriptor.getConfigObject( ) );
+*/
+		configObject.put( "target_description", targetDescriptor.getConfigMap( ) );
 
 		return configObject;
 	}
@@ -270,37 +368,6 @@ public class Sleuth
 		acquirer.acquireData( );
 	}
 
-	private TitleAcquirer getTitleAcquirer( WebDataAcquirer acquirer, String newUrl )
-	{
-		TitleAcquirer titleAcquirer = new TitleAcquirer( acquirer );
-
-		if ( titleAcquiringSource == TitleAcquiringSource.SLEUTH )
-		{
-			titleAcquirer = new TitleAcquirer( acquirer );
-		}
-		else if ( titleAcquiringSource == TitleAcquiringSource.STATISTER )
-		{
-			try
-			{
-				titleAcquirer = new TitleAcquirer(
-						WebDataAcquirerFactory.getDataAcquirer(
-								targetDescriptor.getDataType( ),
-								newUrl ).acquireData( ) );
-			}
-			catch ( Exception e )
-			{
-				lastException = e;
-
-				// TODO: Implement error handling.
-			}
-		}
-		else
-		{
-			throw new UnsupportedOperationException( );
-		}
-
-		return titleAcquirer;
-	}
 
 	public void stop( )
 	{
@@ -325,56 +392,63 @@ public class Sleuth
 					@Override
 					public void run( )
 					{
-						lastException = null;
-
-						WebDataAcquirer acquirer =
-								WebDataAcquirerFactory.getDataAcquirer( urlDescriptor.dataType, urlDescriptor.url );
-
-						try
-						{
-							acquirer.acquireData( );
-						}
-						catch ( Exception e )
-						{
-							// TODO: Implement error handling.
-							lastException = e;
-
-							return;
-						}
-
-						String newUrl = urlDescriptor.targetUrlPrefix +
-								acquirer.getValue( urlDescriptor.newIdQuery ) + urlDescriptor.targetUrlPostfix;
-
-						if ( ! lastUrl.equals( newUrl ) && ! newUrl.isEmpty( ) )
-						{
-							lastUrl = newUrl;
-
-							Statistics.StatisticsHeader siteDescriptor =
-									new Statistics.StatisticsHeader( targetDescriptor );
-							siteDescriptor.setUrl( newUrl );
-
-							TitleAcquirer titleAcquirer = getTitleAcquirer( acquirer, newUrl );
-
-							titleAcquirer.setTitleParts( titleParts );
-
-							try
-							{
-								siteDescriptor.setHeadline( titleAcquirer.getTitle( ) );
-							}
-							catch ( Exception e )
-							{
-								lastException = e;
-
-								// TODO: Implement error handling.
-							}
-
-
-							siteDescriptorConsumer.accept( siteDescriptor );
-						}
+						timerHandler( );
 					}
 				},
 				0,
 				periodInMillis
 		);
+	}
+
+	private void timerHandler( )
+	{
+		lastException = null;
+/*
+		WebDataAcquirer acquirer =
+				WebDataAcquirerFactory.getDataAcquirer( urlDescriptor.dataType, urlDescriptor.url );
+*/
+		try
+		{
+			dataAcquirer.acquireData( );
+		}
+		catch ( Exception e )
+		{
+			// TODO: Implement error handling.
+			lastException = e;
+
+			return;
+		}
+
+		String newUrl = urlDescriptor.targetUrlPrefix +
+				dataAcquirer.getValue( urlDescriptor.newIdQuery ) + urlDescriptor.targetUrlPostfix;
+
+		if ( ! lastUrl.equals( newUrl ) && ! newUrl.isEmpty( ) )
+		{
+			lastUrl = newUrl;
+
+			Statistics.StatisticsHeader siteDescriptor =
+					new Statistics.StatisticsHeader( targetDescriptor );
+			siteDescriptor.setUrl( newUrl );
+/*
+			HeadlineAcquirer titleAcquirer = getTitleAcquirer( acquirer, newUrl );
+
+			titleAcquirer.setTitleParts( titleParts );
+*/
+			WebDataAcquirer statisterDataAcquirer =
+					WebDataAcquirerFactory.getDataAcquirer( targetDescriptor.getDataType( ), newUrl );
+			try
+			{
+				siteDescriptor.setHeadline( headlineAcquirer.getHeadline( statisterDataAcquirer ) );
+			}
+			catch ( Exception e )
+			{
+				lastException = e;
+
+				// TODO: Implement error handling.
+			}
+
+
+			siteDescriptorConsumer.accept( siteDescriptor );
+		}
 	}
 }

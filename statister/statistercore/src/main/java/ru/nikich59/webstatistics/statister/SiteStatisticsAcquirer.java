@@ -1,11 +1,9 @@
 package ru.nikich59.webstatistics.statister;
 
-import ru.nikich59.webstatistics.statister.dataprocessor.DataProcessor;
-import ru.nikich59.webstatistics.statister.dataprocessor.DataProcessorFactory;
+import ru.nikich59.webstatistics.core.corebasics.stats.Statistics;
+import ru.nikich59.webstatistics.core.corebasics.stats.controller.StatsController;
 import ru.nikich59.webstatistics.statister.webdataacquirer.WebDataAcquirer;
 import ru.nikich59.webstatistics.statister.webdataacquirer.WebDataAcquirerFactory;
-import stats.Statistics;
-import stats.controller.StatsController;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -21,213 +19,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 public class SiteStatisticsAcquirer implements Comparable < SiteStatisticsAcquirer >
 {
-	/*
-	public static class SiteDescriptor implements Cloneable
-	{
-		public static class ValueDescriptor
-		{
-			String name;
-			String query;
-		}
-
-		private String url = "";
-		private String headline = "";
-		private List < ValueDescriptor > valueDescriptors = new ArrayList <>( );
-		private DataType dataType;
-		private int initialAcquirePeriodInMillis = 60000;
-		private String dataProcessingMethod = "";
-		private boolean checkForTooSmallData = true;
-		private long targetColumnSum = 0;
-		private long targetValuePeriodInMinutes = 60;
-		private long expirationPeriodInMinutes = 60 * 24 * 30; // 30 days
-
-		public SiteDescriptor( String url )
-		{
-			this.url = url;
-		}
-
-		public SiteDescriptor( SiteDescriptor other )
-		{
-			url = other.url;
-			headline = other.headline;
-			valueDescriptors.addAll( other.valueDescriptors );
-			url = other.url;
-			dataType = other.dataType;
-			initialAcquirePeriodInMillis = other.initialAcquirePeriodInMillis;
-			dataProcessingMethod = other.dataProcessingMethod;
-			checkForTooSmallData = other.checkForTooSmallData;
-			targetColumnSum = other.targetColumnSum;
-			targetValuePeriodInMinutes = other.targetValuePeriodInMinutes;
-			expirationPeriodInMinutes = other.expirationPeriodInMinutes;
-		}
-
-		public void setUrl( String url )
-		{
-			this.url = url;
-		}
-
-		public void setHeadline( String headline )
-		{
-			this.headline = headline;
-		}
-
-		public String getHeadline( )
-		{
-			return headline;
-		}
-
-		public void setInitialAcquirePeriodInMillis( int initialAcquirePeriodInMillis )
-		{
-			this.initialAcquirePeriodInMillis = initialAcquirePeriodInMillis;
-		}
-
-		public int getInitialAcquirePeriodInMillis( )
-		{
-			return initialAcquirePeriodInMillis;
-		}
-
-		public void setCheckForTooSmallData( boolean checkForTooSmallData )
-		{
-			this.checkForTooSmallData = checkForTooSmallData;
-		}
-
-		public boolean checkForTooSmallData( )
-		{
-			return checkForTooSmallData;
-		}
-
-		public void setTargetColumnSum( long targetColumnSum )
-		{
-			this.targetColumnSum = targetColumnSum;
-		}
-
-		public long getTargetColumnSum( )
-		{
-			return targetColumnSum;
-		}
-
-		public void setTargetValuePeriodInMinutes( long targetValuePeriodInMinutes )
-		{
-			this.targetValuePeriodInMinutes = targetValuePeriodInMinutes;
-		}
-
-		public long getTargetValuePeriodInMinutes( )
-		{
-			return targetValuePeriodInMinutes;
-		}
-
-		public void setExpirationPeriodInMinutes( long expirationPeriodInMinutes )
-		{
-			this.expirationPeriodInMinutes = expirationPeriodInMinutes;
-		}
-
-		public long getExpirationPeriodInMinutes( )
-		{
-			return expirationPeriodInMinutes;
-		}
-
-		public SiteDescriptor( JSONObject configJson )
-		{
-			url = ( String ) configJson.get( "url" );
-			dataType = DataType.fromString( ( String ) configJson.get( "data_type" ) );
-			initialAcquirePeriodInMillis = ( int ) ( long ) configJson.get( "period" );
-			if ( configJson.get( "data_processing_method" ) != null )
-			{
-				dataProcessingMethod = ( String ) configJson.get( "data_processing_method" );
-			}
-			else
-			{
-				dataProcessingMethod = "";
-			}
-
-			if ( configJson.get( "target_value_sum" ) != null )
-			{
-				targetColumnSum = ( long ) configJson.get( "target_value_sum" );
-
-				if ( configJson.get( "target_value_period_in_minutes" ) != null )
-				{
-					targetValuePeriodInMinutes = ( long ) configJson.get( "target_value_period_in_minutes" );
-
-					checkForTooSmallData = true;
-				}
-			}
-
-			if ( configJson.get( "expiration_period_in_minutes" ) != null )
-			{
-				expirationPeriodInMinutes = ( long ) configJson.get( "expiration_period_in_minutes" );
-			}
-
-			valueDescriptors = new ArrayList <>( );
-			JSONArray valueDescriptorsArray = ( JSONArray ) configJson.get( "value_description" );
-			for ( Object valueDescriptorObject : valueDescriptorsArray )
-			{
-				JSONObject valueDescriptorJson = ( JSONObject ) valueDescriptorObject;
-
-				ValueDescriptor valueDescriptor = new ValueDescriptor( );
-				valueDescriptor.query = ( String ) valueDescriptorJson.get( "query" );
-				valueDescriptor.name = ( String ) valueDescriptorJson.get( "name" );
-
-				valueDescriptors.add( valueDescriptor );
-			}
-		}
-
-		public void setDataProcessingMethod( String dataProcessingMethod )
-		{
-			this.dataProcessingMethod = dataProcessingMethod;
-		}
-
-		public String getDataProcessingMethod( )
-		{
-			return dataProcessingMethod;
-		}
-
-		public String getUrl( )
-		{
-			return url;
-		}
-
-		public void setDataType( DataType dataType )
-		{
-			this.dataType = dataType;
-		}
-
-		public DataType getDataType( )
-		{
-			return dataType;
-		}
-
-		public List < ValueDescriptor > getValueDescriptors( )
-		{
-			return valueDescriptors;
-		}
-
-		public void addValueDescriptor( ValueDescriptor valueDescriptor )
-		{
-			valueDescriptors.add( valueDescriptor );
-		}
-
-		public void setValueDescriptors( List < ValueDescriptor > valueDescriptors )
-		{
-			this.valueDescriptors = valueDescriptors;
-		}
-
-		public Statistics.StatisticsHeader getStatisticsHeader( )
-		{
-			Statistics.StatisticsHeader statisticsHeader = new Statistics.StatisticsHeader( );
-			List < String > columnNames = new ArrayList <>( );
-			List < String > columnQueries = new ArrayList <>( );
-			for ( ValueDescriptor valueDescriptor : getValueDescriptors( ) )
-			{
-				columnNames.add( valueDescriptor.name );
-				columnQueries.add( valueDescriptor.query );
-			}
-
-			statisticsHeader.setColumnNames( columnNames );
-			statisticsHeader.setColumnQueries( columnQueries );
-
-			statisticsHeader.setDataProcessingMethod( getDataProcessingMethod( ) );
-		}
-	}*/
 
 	public Statistics.StatisticsHeader getStatisticsHeader( )
 	{
@@ -251,11 +42,11 @@ public class SiteStatisticsAcquirer implements Comparable < SiteStatisticsAcquir
 		return lastData;
 	}
 	private List < String > lastData = new ArrayList <>( );
-//	private Sleuth.DataType dataType = Sleuth.DataType.XML;
+//	private Sleuth.WebDataType dataType = Sleuth.WebDataType.XML;
 
 //	private String configFilePath;
 
-	public int getAcquiringPeriod( )
+	public long getAcquiringPeriod( )
 	{
 		return statisticsHeader.getPeriodInMillis( );
 	}
@@ -389,19 +180,22 @@ public class SiteStatisticsAcquirer implements Comparable < SiteStatisticsAcquir
 
 		List < String > data = new ArrayList <>( );
 
-		for ( String query : statisticsHeader.getColumnQueries( ) )
+		for ( Statistics.ValueDescription valueDescription : statisticsHeader.getValueDescriptions( ) )
 		{
-			data.add( statisticsAcquirer.getValue( query ) );
+			data.add( valueDescription.getDataType( )
+					.getProcessedData( statisticsAcquirer.getValue( valueDescription.getQuery( ) ) ) );
 		}
 
 		lastData = data;
 
+		dataPoint.setData( data );
+/*
 		dataPoint.data = new String[ data.size( ) ];
 		for ( int i = 0; i < data.size( ); i += 1 )
 		{
 			dataPoint.data[ i ] = getProcessedData( data.get( i ) );
 		}
-
+*/
 		try
 		{
 			statsController.appendData( dataPoint );
@@ -442,7 +236,7 @@ public class SiteStatisticsAcquirer implements Comparable < SiteStatisticsAcquir
 
 			long columnSum = 0L;
 
-			for ( String columnValue : dataPoint.data )
+			for ( String columnValue : dataPoint.getData( ) )
 			{
 				columnSum += Long.parseLong( columnValue );
 			}
@@ -469,12 +263,12 @@ public class SiteStatisticsAcquirer implements Comparable < SiteStatisticsAcquir
 			}
 		}
 	}
-
+/*
 	private String getProcessedData( String data )
 	{
 		DataProcessor dataProcessor =
 				DataProcessorFactory.getDataProcessor( statisticsHeader.getDataProcessingMethod( ) );
 
 		return dataProcessor.getProcessedData( data );
-	}
+	}*/
 }

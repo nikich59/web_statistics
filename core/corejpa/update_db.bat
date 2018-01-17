@@ -1,0 +1,1 @@
+..\..\..\..\..\liquibase-3.5.3-bin\liquibase.bat --driver=org.postgresql.Driver --changeLogFile=liquibase\changelog.xml --logLevel=debug --url="jdbc:postgresql://localhost:5432/statsdb" --username=postgres --password=142434 update

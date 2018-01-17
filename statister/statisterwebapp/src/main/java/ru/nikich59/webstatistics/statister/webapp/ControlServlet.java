@@ -1,15 +1,16 @@
 package ru.nikich59.webstatistics.statister.webapp;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+
+import net.minidev.json.JSONArray;
+import net.minidev.json.JSONObject;
+import net.minidev.json.parser.JSONParser;
 import ru.nikich59.webstatistics.statister.SiteStatisticsAcquirer;
 import ru.nikich59.webstatistics.statister.Template;
 import ru.nikich59.webstatistics.statister.TemplateLoader;
 import ru.nikich59.webstatistics.statister.TemplateParameter;
 import ru.nikich59.webstatistics.statister.sleuth.SleuthControllerJSON;
-import stats.Statistics;
-import stats.controller.StatsController;
+import ru.nikich59.webstatistics.core.corebasics.stats.Statistics;
+import ru.nikich59.webstatistics.core.corebasics.stats.controller.StatsController;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

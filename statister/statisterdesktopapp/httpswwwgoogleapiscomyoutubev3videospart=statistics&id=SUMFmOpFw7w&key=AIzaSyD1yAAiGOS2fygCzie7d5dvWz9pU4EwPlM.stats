@@ -1,0 +1,19 @@
+2018-01-13T23:34:26.801+03:00[Europe/Moscow]
+https://www.googleapis.com/youtube/v3/videos?part=statistics&id=SUMFmOpFw7w&key=AIzaSyD1yAAiGOS2fygCzie7d5dvWz9pU4EwPlM
+Алексей Навальный : Новогоднее обращение Алексея Навального
+timestamp "likes" "dislikes" "views" "comments"
+timestamp "items/0 statistics likeCount" "items/0 statistics dislikeCount" "items/0 statistics viewCount" "items/0 statistics commentCount"
+
+90000
+json
+1000000000000
+60
+43200
+timestamp "int" "int" "int" "int"
+false
+
+
+
+2018-01-13T23:34:26.951+03:00[Europe/Moscow] 299397 167425 2225816 40577
+2018-01-13T23:43:31.638+03:00[Europe/Moscow] 299416 167412 2225841 40577
+2018-01-14T01:47:50.623+03:00[Europe/Moscow] 299576 167335 2228169 40540

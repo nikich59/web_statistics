@@ -1,7 +1,7 @@
 package ru.nikich59.webstatistics.statister.webapp;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import net.minidev.json.JSONObject;
+import net.minidev.json.parser.JSONParser;
 import ru.nikich59.webstatistics.statister.desktopapp.TemporaryController;
 import ru.nikich59.webstatistics.statister.model.Model;
 import ru.nikich59.webstatistics.statister.statistercli.Controller;
@@ -21,6 +21,7 @@ public class WebApp implements ServletContextListener
 {
 	private Model model;
 	private Controller controller;
+	private ru.nikich59.webstatistics.visio.visiocore.model.Model visioModel;
 
 
 	@Override
@@ -44,6 +45,8 @@ public class WebApp implements ServletContextListener
 			JSONObject configObject = ( JSONObject ) new JSONParser( ).parse( fileReader );
 			model = new Model( configObject );
 
+			visioModel = new ru.nikich59.webstatistics.visio.visiocore.model.Model( configObject );
+
 //			controller = new Controller( configObject );
 			controller = new TemporaryController( configObject );
 
@@ -53,6 +56,8 @@ public class WebApp implements ServletContextListener
 
 			event.getServletContext( ).setAttribute( "model", model );
 			event.getServletContext( ).setAttribute( "controller", controller );
+
+			event.getServletContext( ).setAttribute( "visio_model", visioModel );
 
 			event.getServletContext( ).setAttribute( "sleuth_template_directory",
 					( String ) configObject.get( "sleuth_template_directory" ) );

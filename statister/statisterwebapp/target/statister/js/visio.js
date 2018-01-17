@@ -32,8 +32,8 @@ app.controller("myCtrl", function ($scope, $interval, $http) {
         );
     /*
      $.get("visio_list", function (data) {
-     $scope.stats = $.parseJSON(data);
-     console.info($scope.stats);
+     $scope.ru.nikich59.webstatistics.core.corebasics.stats = $.parseJSON(data);
+     console.info($scope.ru.nikich59.webstatistics.core.corebasics.stats);
      $("#stats_select").show();
      });
      */

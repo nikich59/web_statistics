@@ -27,16 +27,16 @@
 	  "data_type": "json"
 	},
 	"period_in_millis": 90000,
-	"title_description": {
-	  "source": "sleuth",
+	"headline_description": {
 	  "parts": [
 		{
+		  "mode": "sleuth",
 		  "query": "items/0 snippet channelTitle",
-		  "postfix": ":"
+		  "postfix": " : "
 		},
 		{
-		  "query": "items/0 snippet title",
-		  "postfix": ""
+		  "mode": "sleuth",
+		  "query": "items/0 snippet title"
 		}
 	  ]
 	},
@@ -47,21 +47,26 @@
 	  "value_description": [
 		{
 		  "name": "likes",
-		  "query": "items/0 statistics likeCount"
+		  "query": "items/0 statistics likeCount",
+		  "data_type": "int"
 		},
 		{
 		  "name": "dislikes",
-		  "query": "items/0 statistics dislikeCount"
+		  "query": "items/0 statistics dislikeCount",
+		  "data_type": "int"
 		},
 		{
 		  "name": "views",
-		  "query": "items/0 statistics viewCount"
+		  "query": "items/0 statistics viewCount",
+		  "data_type": "int"
 		},
 		{
 		  "name": "comments",
-		  "query": "items/0 statistics commentCount"
+		  "query": "items/0 statistics commentCount",
+		  "data_type": "int"
 		}
 	  ]
 	}
   }
+
 }

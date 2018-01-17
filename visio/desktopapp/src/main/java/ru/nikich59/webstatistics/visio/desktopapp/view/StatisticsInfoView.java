@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import ru.nikich59.webstatistics.visio.desktopcore.FXMLLoader;
-import stats.Statistics;
+import ru.nikich59.webstatistics.core.corebasics.stats.Statistics;
 
 import java.io.IOException;
 

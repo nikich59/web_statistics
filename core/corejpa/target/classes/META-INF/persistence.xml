@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+			 xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="Statistics" transaction-type="RESOURCE_LOCAL">
+		<!-- Persistence provider -->
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<!-- Entity classes -->
+		<class>ru.nikich59.webstatistics.core.corejpa.entity.Statistics</class>
+		<class>ru.nikich59.webstatistics.core.corejpa.entity.WebDataType</class>
+		<class>ru.nikich59.webstatistics.core.corejpa.entity.DictHeadlinePartMode</class>
+		<class>ru.nikich59.webstatistics.core.corejpa.entity.HeadlinePart</class>
+		<class>ru.nikich59.webstatistics.core.corejpa.entity.LinkExpirationCheckerToStatistics</class>
+		<class>ru.nikich59.webstatistics.core.corejpa.entity.LinkHeadlinePartToSleuth</class>
+		<class>ru.nikich59.webstatistics.core.corejpa.entity.Sleuth</class>
+		<class>ru.nikich59.webstatistics.core.corejpa.entity.SleuthNewUrlAcquirer</class>
+		<class>ru.nikich59.webstatistics.core.corejpa.entity.StatisticsDataPoint</class>
+		<class>ru.nikich59.webstatistics.core.corejpa.entity.StatisticsExpirationChecker</class>
+		<class>ru.nikich59.webstatistics.core.corejpa.entity.StatisticsValue</class>
+		<class>ru.nikich59.webstatistics.core.corejpa.entity.StatisticsValueDataType</class>
+		<class>ru.nikich59.webstatistics.core.corejpa.entity.StatisticsValueDescription</class>
+
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+		</properties>
+
+	</persistence-unit>
+</persistence>

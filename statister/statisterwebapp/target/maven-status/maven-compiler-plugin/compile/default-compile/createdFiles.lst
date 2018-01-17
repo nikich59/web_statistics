@@ -1,4 +1,8 @@
+ru\nikich59\webstatistics\statister\webapp\VisioListServlet.class
+ru\nikich59\webstatistics\statister\webapp\ControlServlet.class
+ru\nikich59\webstatistics\statister\webapp\VisioServlet.class
 ru\nikich59\webstatistics\statister\webapp\ListServlet.class
 ru\nikich59\webstatistics\statister\webapp\WebApp.class
-ru\nikich59\webstatistics\statister\webapp\ControlServlet.class
+jpa\User.class
+ru\nikich59\webstatistics\statister\webapp\TestServlet.class
 ru\nikich59\webstatistics\statister\webapp\Servlet.class

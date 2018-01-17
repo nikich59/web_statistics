@@ -1,10 +1,10 @@
 package ru.nikich59.webstatistics.statister;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import net.minidev.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Nikita on 10.01.2018.
@@ -23,20 +23,20 @@ public class Template
 	}
 	private String description;
 
-	public Template( JSONObject configObject )
+	public Template( Map < String, Object > configMap )
 	{
-		JSONArray parameterArray = ( JSONArray ) configObject.get( "parameters" );
+		List < Object > parameterArray = ( List < Object > ) configMap.get( "parameters" );
 
 		for ( Object parameterConfig : parameterArray )
 		{
-			JSONObject parameterConfigJson = ( JSONObject ) parameterConfig;
+			Map < String, Object > parameterMap = ( Map < String, Object > ) parameterConfig;
 
-			parameters.add( new TemplateParameter( parameterConfigJson ) );
+			parameters.add( new TemplateParameter( parameterMap ) );
 		}
 
-		template = ( JSONObject ) configObject.get( "template" );
+		template = ( JSONObject ) configMap.get( "template" );
 
-		description = ( String ) configObject.get( "description" );
+		description = ( String ) configMap.get( "description" );
 	}
 
 	public JSONObject getProcessedTemplate( )

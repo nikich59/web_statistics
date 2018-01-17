@@ -2,6 +2,13 @@
   "description": "VK community",
   "parameters": [
 	{
+	  "target_query": "headline_description parts/0 postfix",
+	  "description": "Post title prefix",
+	  "selector": "^.*$",
+	  "prefix": "",
+	  "postfix": ""
+	},
+	{
 	  "target_query": "description url",
 	  "description": "VK community full url",
 	  "selector": "^.*$",
@@ -25,18 +32,20 @@
 	  "description": ""
 	},
 	"period_in_millis": 60000,
-	"title_description": {
-	  "source": "statister",
+	"headline_description": {
 	  "parts": [
 		{
+		  "mode": "raw",
 		  "query": "",
-		  "postfix": "MDK: "
+		  "postfix": ""
 		},
 		{
+		  "mode": "statister",
 		  "query": ".post_video_title",
 		  "postfix": ""
 		},
 		{
+		  "mode": "statister",
 		  "query": ".wall_post_text",
 		  "postfix": ""
 		}
@@ -46,23 +55,30 @@
 	  "url": "",
 	  "data_type": "xml",
 	  "period": 60000,
-	  "data_processing_method": "int",
 	  "headline": "",
 	  "target_value_sum": 20000,
 	  "target_value_period_in_minutes": 1440,
-	  "expiration_period_in_minutes": 10080,
+	  "expiration_period_in_minutes": 1440,
 	  "value_description": [
 		{
 		  "name": "likes",
-		  "query": ".post_like_count"
+		  "query": ".post_like_count",
+		  "data_type": "int"
 		},
 		{
 		  "name": "reposts",
-		  "query": ".post_share_count"
+		  "query": ".post_share_count",
+		  "data_type": "int"
 		},
 		{
 		  "name": "comments",
-		  "query": ".wall_comments_summary"
+		  "query": ".wall_comments_summary",
+		  "data_type": "int"
+		},
+		{
+		  "name": "views",
+		  "query": ".post_views $attr$title",
+		  "data_type": "int"
 		}
 	  ]
 	}

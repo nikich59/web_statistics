@@ -1,0 +1,11 @@
+{
+  "sleuth_directory": "../../../../../../Java/stats/stats/sleuth/",
+  "statistics_directory": "../../../../../../Java/stats/stats/statisters/",
+  "finished_statistics_directory": "../../../../../../Java/stats/stats/finished/",
+  "sleuth_template_directory": "../../../../../../Java/stats/stats/sleuth_templates/",
+  "statister_template_directory": "../../../../../../Java/stats/stats/statister_templates/",
+  "statistics_mode": "stats_files",
+  "report_period_in_millis": 1000,
+  "sleuth_timer_period_in_millis": 1000,
+  "statister_timer_period_in_millis": 1000
+}
